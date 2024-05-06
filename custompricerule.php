@@ -1,0 +1,209 @@
+<?php
+/**
+ * 2007-2024 PrestaShop
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@prestashop.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+ * versions in the future. If you wish to customize PrestaShop for your
+ * needs please refer to http://www.prestashop.com for more information.
+ *
+ *  @author    PrestaShop SA <contact@prestashop.com>
+ *  @copyright 2007-2024 PrestaShop SA
+ *  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ *  International Registered Trademark & Property of PrestaShop SA
+ */
+
+if (!defined('_PS_VERSION_')) {
+    exit;
+}
+
+class Custompricerule extends Module
+{
+    public function __construct()
+    {
+        $this->name = 'custompricerule';
+        $this->tab = 'administration';
+        $this->version = '1.0.0';
+        $this->author = 'Piment Bleu';
+        $this->need_instance = 1;
+
+        $this->bootstrap = false;
+
+        parent::__construct();
+
+        $this->displayName = $this->l('Custom Price Rule');
+        $this->description = $this->l('Custom Price Rule Description');
+
+        $this->ps_versions_compliancy = ['min' => '1.7', 'max' => _PS_VERSION_];
+    }
+
+
+    public function install()
+    {
+        return parent::install() &&
+            $this->installDb() &&
+            $this->registerHook('displayBackOfficeHeader') &&
+            $this->registerHook('actionProductPriceCalculation') &&
+            $this->registerHook('actionObjectProductUpdateAfter');
+    }
+
+    public function uninstall()
+    {
+        return parent::uninstall() && $this->uninstallDb();
+    }
+
+    public function installDb()
+    {
+        return Db::getInstance()->execute(
+            'CREATE TABLE IF NOT EXISTS  `' . _DB_PREFIX_ . 'custom_price_rule` (
+            `id_price_rule` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+			`id_group` INT UNSIGNED NOT NULL,
+			`coef` int(3) NOT NULL,
+			`date_add` datetime,
+			PRIMARY KEY (`id_price_rule`))
+			ENGINE=' . _MYSQL_ENGINE_ . ' default CHARSET=utf8'
+        );
+    }
+
+    public function uninstallDb()
+    {
+        return Db::getInstance()->execute('DROP TABLE IF EXISTS ' . _DB_PREFIX_ . 'custom_price_rule;');
+    }
+
+    /**
+     * This method handles the module's configuration page
+     * @return string The page's HTML content 
+     */
+    public function getContent()
+    {
+        // display any message, then the form
+        return $this->displayHelpBox() . $this->displayForm() . $this->displayRulesList()/*  . $this->displayVue() */ ;
+    }
+
+    /**
+     * Builds the configuration form
+     * @return string HTML code
+     */
+    public function displayRulesList()
+    {
+        $rules = $this->getCustomPriceRules();
+        foreach ($rules as $rule) {
+            date_default_timezone_set('Europe/Paris');
+            $timestamp = strtotime($rule['date_add']);
+            $rule['date_add'] = (string) date("l, j F Y à H:i", $timestamp);
+            echo $rule['date_add'];
+        }
+        var_dump($rules);
+        unset($rule);
+        $this->context->smarty->assign(['rules' => $rules]);
+        return $this->display(__FILE__, 'views/templates/admin/price_rule-list.tpl');
+
+    }
+
+    /**
+     * Builds the configuration form
+     * @return string HTML code
+     */
+    public function displayForm()
+    {
+        $this->context->smarty->assign(['groups' => $this->getGroups()]);
+        return $this->display(__FILE__, 'views/templates/admin/configure.tpl');
+    }
+
+
+    /**
+     * Builds the configuration form
+     * @return string HTML code
+     */
+    public function displayHelpBox()
+    {
+        return $this->display(__FILE__, 'views/templates/admin/help-box.tpl');
+    }
+
+
+    public function hookActionObjectProductUpdateAfter($params)
+    {
+        // Retrieve the ID of product
+        $productId = (int) $params['object']->id;
+
+        PrestaShopLogger::addLog("modification : $productId", 2);
+        // new product object
+        /* $product = new Product($productId);
+
+        if (!Validate::isLoadedObject($product)) {
+            die('Product does not exist');
+        }
+
+        $newPrice = $product->wholesale_price * 1.25;
+
+        if ($newPrice) {
+            // Set specific price details
+            $specific_price = new SpecificPrice();
+            $specific_price->id_product = $productId;
+            $specific_price->id_customer = 0;
+            $specific_price->id_shop = 0; // 0 if you want this to apply to all shops
+            $specific_price->id_currency = 0; // 0 for all currencies
+            $specific_price->id_country = 0; // 0 for all countries
+            $specific_price->id_group = 8; // 0 for all groups
+            $specific_price->price = $newPrice; // Set a new price or use -1 to not change the product price
+            $specific_price->from_quantity = 1;  // The minimum quantity needed to apply the discount
+            $specific_price->reduction = 0; // 20% reduction. For amount reduction, use a value here and set reduction_type to 'amount'
+            $specific_price->reduction_type = 'amount'; // 'amount' for a fixed amount reduction
+            $specific_price->from = '0000-00-00 00:00:00'; // Starting date of the specific price
+            $specific_price->to = '0000-00-00 00:00:00'; // Ending date of the specific price
+
+            // Save the new specific price
+            return $specific_price->add();
+        } */
+
+    }
+
+    public function hookDisplayBackOfficeHeader()
+    {
+        if (Tools::getValue('configure') == $this->name) {
+            $this->context->controller->addJS($this->_path . 'views/js/back.js');
+
+        }
+        $token = Tools::getAdminTokenLite('AdminCustomPriceRule');
+        //define js value to use in ajax url
+        Media::addJsDef(
+            array(
+                "token" => $token,
+            )
+        );
+    }
+
+    public function updatepriceRuleValue()
+    {
+        Db::getInstance()->executeS();
+    }
+
+    public function getProductsWithpriceRuleValue()
+    {
+        return Db::getInstance()->executeS("SELECT * FROM `" . _DB_PREFIX_ . "specific_price` WHERE `id_group` = 8");
+    }
+
+    public function getGroups()
+    {
+        return Db::getInstance()->executeS("SELECT `id_group` as 'id_option', `name` FROM `" . _DB_PREFIX_ . "group_lang`");
+    }
+
+    public function getCustomPriceRules()
+    {
+        return Db::getInstance()->executeS("SELECT cpr.*, gl.name as 'group_name'
+        FROM `" . _DB_PREFIX_ . "custom_price_rule` cpr 
+        JOIN `" . _DB_PREFIX_ . "group_lang` gl ON cpr.id_group = gl.id_group;");
+    }
+
+}
