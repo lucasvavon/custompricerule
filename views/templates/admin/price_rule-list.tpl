@@ -8,7 +8,7 @@
     </div>
 
     <div class="puik-card puik-card--default" style="margin-bottom: 20px;">
-        <h3>{l s='Rules list' d='Modules.Custompricerule.Admin'}</h3>
+        <h3 class="puik-h3">{l s='Rules list' d='Modules.Custompricerule.Admin'}</h3>
         <div class="form-wrapper">
             <div class="puik-button-group" role="group" aria-label="Position selection">
                 <div class="puik-table__container">
@@ -56,6 +56,10 @@
     </div>
 </div>
 <style>
+    #content {
+        padding: 110px 200px 100px
+    }
+
     #content .loaderAdd-container,
     #content .loaderDelete-container {
         position: absolute;

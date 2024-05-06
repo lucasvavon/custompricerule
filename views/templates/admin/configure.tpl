@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="puik-card puik-card--default" style="margin-bottom: 20px;">
-        <h3>{l s='Add a rule' d='Modules.Custompricerule.Admin'}</h3>
+        <h3 class="puik-h3">{l s='Add a rule' d='Modules.Custompricerule.Admin'}</h3>
         <div>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">{l s='Group' d='Modules.Custompricerule.Admin'}</label>
@@ -21,7 +21,10 @@
                 <input class="form-control form-control-lg" type="text" id="coefficient" name="coefficient" required>
             </div>
         </div>
-        <button type="submit" class="puik-button puik-button--primary puik-button--md" style="width: max-content;">{l
-            s='Apply rule' d='Modules.Custompricerule.Admin'}</button>
+        <div style="text-align: right;">
+            <button type="submit" class="puik-button puik-button--primary puik-button--md"
+                style="width: max-content;">{l
+                s='Apply rule' d='Modules.Custompricerule.Admin'}</button>
+        </div>
     </div>
 </form>
