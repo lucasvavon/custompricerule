@@ -1,29 +1,22 @@
 <?php
 /**
- * 2007-2024 PrestaShop
+ * Copyright since 2007 PrestaShop SA and Contributors
+ * PrestaShop is an International Registered Trademark & Property of PrestaShop SA
  *
  * NOTICE OF LICENSE
  *
- * This source file is subject to the Academic Free License (AFL 3.0)
- * that is bundled with this package in the file LICENSE.txt.
+ * This source file is subject to the Academic Free License version 3.0
+ * that is bundled with this package in the file LICENSE.md.
  * It is also available through the world-wide-web at this URL:
- * http://opensource.org/licenses/afl-3.0.php
+ * https://opensource.org/licenses/AFL-3.0
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
  * to license@prestashop.com so we can send you a copy immediately.
  *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
- * versions in the future. If you wish to customize PrestaShop for your
- * needs please refer to http://www.prestashop.com for more information.
- *
- *  @author    PrestaShop SA <contact@prestashop.com>
- *  @copyright 2007-2024 PrestaShop SA
- *  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
- *  International Registered Trademark & Property of PrestaShop SA
+ * @author    PrestaShop SA and Contributors <contact@prestashop.com>
+ * @copyright Since 2007 PrestaShop SA and Contributors
+ * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 if (!defined('_PS_VERSION_')) {
     exit;
 }
@@ -49,13 +42,12 @@ class Custompricerule extends Module
         $this->ps_versions_compliancy = ['min' => '1.7', 'max' => _PS_VERSION_];
     }
 
-
     public function install()
     {
-        return parent::install() &&
-            $this->installDb() &&
-            $this->registerHook('displayBackOfficeHeader') &&
-            $this->registerHook('actionObjectProductUpdateAfter');
+        return parent::install()
+            && $this->installDb()
+            && $this->registerHook('displayBackOfficeHeader')
+            && $this->registerHook('actionObjectProductUpdateAfter');
     }
 
     public function uninstall()
@@ -83,7 +75,8 @@ class Custompricerule extends Module
 
     /**
      * This method handles the module's configuration page
-     * @return string The page's HTML content 
+     *
+     * @return string The page's HTML content
      */
     public function getContent()
     {
@@ -93,36 +86,38 @@ class Custompricerule extends Module
 
     /**
      * Builds the configuration form
+     *
      * @return string HTML code
      */
     public function displayRulesList()
     {
         $rules = $this->getCustomPriceRules();
         $this->context->smarty->assign(['rules' => $rules]);
-        return $this->display(__FILE__, 'views/templates/admin/price_rule-list.tpl');
 
+        return $this->display(__FILE__, 'views/templates/admin/price_rule-list.tpl');
     }
 
     /**
      * Builds the configuration form
+     *
      * @return string HTML code
      */
     public function displayForm()
     {
         $this->context->smarty->assign(['groups' => $this->getGroups()]);
+
         return $this->display(__FILE__, 'views/templates/admin/configure.tpl');
     }
 
-
     /**
      * Builds the configuration form
+     *
      * @return string HTML code
      */
     public function displayHelpBox()
     {
         return $this->display(__FILE__, 'views/templates/admin/help-box.tpl');
     }
-
 
     public function hookActionObjectProductUpdateAfter($params)
     {
@@ -158,7 +153,6 @@ class Custompricerule extends Module
             // Save the new specific price
             return $specific_price->add();
         } */
-
     }
 
     public function hookDisplayBackOfficeHeader()
@@ -168,11 +162,11 @@ class Custompricerule extends Module
             $this->context->controller->addCSS($this->_path . 'views/css/back.css');
         }
         $token = Tools::getAdminTokenLite('AdminCustomPriceRule');
-        //define js value to use in ajax url
+        // define js value to use in ajax url
         Media::addJsDef(
-            array(
-                "token" => $token,
-            )
+            [
+                'token' => $token,
+            ]
         );
     }
 
@@ -183,24 +177,23 @@ class Custompricerule extends Module
 
     public function getProductsWithpriceRuleValue()
     {
-        return Db::getInstance()->executeS("SELECT * FROM `" . _DB_PREFIX_ . "specific_price` WHERE `id_group` = 8");
+        return Db::getInstance()->executeS('SELECT * FROM `' . _DB_PREFIX_ . 'specific_price` WHERE `id_group` = 8');
     }
 
     public function getGroups()
     {
-        return Db::getInstance()->executeS("SELECT `id_group` as 'id_option', `name` FROM `" . _DB_PREFIX_ . "group_lang`");
+        return Db::getInstance()->executeS("SELECT `id_group` as 'id_option', `name` FROM `" . _DB_PREFIX_ . 'group_lang`');
     }
 
     public function getCustomPriceRules()
     {
         return Db::getInstance()->executeS("SELECT cpr.*, gl.name as 'group_name'
-        FROM `" . _DB_PREFIX_ . "custom_price_rule` cpr 
-        JOIN `" . _DB_PREFIX_ . "group_lang` gl ON cpr.id_group = gl.id_group;");
+        FROM `" . _DB_PREFIX_ . 'custom_price_rule` cpr 
+        JOIN `' . _DB_PREFIX_ . 'group_lang` gl ON cpr.id_group = gl.id_group;');
     }
 
     public function isUsingNewTranslationSystem()
     {
         return true;
     }
-
 }

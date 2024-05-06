@@ -1,4 +1,23 @@
 <?php
+/**
+ * Copyright since 2007 PrestaShop SA and Contributors
+ * PrestaShop is an International Registered Trademark & Property of PrestaShop SA
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License version 3.0
+ * that is bundled with this package in the file LICENSE.md.
+ * It is also available through the world-wide-web at this URL:
+ * https://opensource.org/licenses/AFL-3.0
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@prestashop.com so we can send you a copy immediately.
+ *
+ * @author    PrestaShop SA and Contributors <contact@prestashop.com>
+ * @copyright Since 2007 PrestaShop SA and Contributors
+ * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
+ */
+
 class AdminCustomPriceRuleController extends ModuleAdminController
 {
     public function __construct()
@@ -18,9 +37,7 @@ class AdminCustomPriceRuleController extends ModuleAdminController
         }
         $response = ['success' => true, 'message' => $this->trans('The rule has been successfully applied.', [], 'Modules.Custompricerule.Admin')];
         $this->ajaxDie(json_encode($response));
-
     }
-
 
     public function displayAjaxDeletePriceRule()
     {
@@ -70,7 +87,7 @@ class AdminCustomPriceRuleController extends ModuleAdminController
         return $result;
     }
 
-    function addSpecificPrice($productId, $groupId, $coefficient, $wholesalePrice, $attributeId = 0)
+    public function addSpecificPrice($productId, $groupId, $coefficient, $wholesalePrice, $attributeId = 0)
     {
         $newPrice = $this->calculateNewPrice($coefficient, $wholesalePrice);
 
@@ -93,10 +110,8 @@ class AdminCustomPriceRuleController extends ModuleAdminController
         $specificPrice->from = date('Y-m-d H:i:s');
         $specificPrice->to = '0000-00-00 00:00:00';
 
-
         /* $addedPriceId = $specificPrice->id; */
         return $specificPrice->save();
-
     }
 
     public function calculateNewPrice($coefficient, $wholesalePrice)
@@ -104,20 +119,20 @@ class AdminCustomPriceRuleController extends ModuleAdminController
         $coef = (int) $coefficient / 100;
         $amountToAdd = $wholesalePrice * $coef;
         $newPrice = $wholesalePrice + $amountToAdd;
+
         return (float) $newPrice;
     }
-
 
     public function deletePriceRule($id_price_rule, $groupId)
     {
         return
-            Db::getInstance()->delete('specific_price', "id_group = $groupId AND id_customer = 0 AND id_specific_price_rule = 0") &&
-            Db::getInstance()->delete('custom_price_rule', "id_price_rule = $id_price_rule");
+            Db::getInstance()->delete('specific_price', "id_group = $groupId AND id_customer = 0 AND id_specific_price_rule = 0")
+            && Db::getInstance()->delete('custom_price_rule', "id_price_rule = $id_price_rule");
     }
 
     public function getProducts()
     {
-        return Db::getInstance()->executeS("SELECT * FROM `" . _DB_PREFIX_ . "product`");
+        return Db::getInstance()->executeS('SELECT * FROM `' . _DB_PREFIX_ . 'product`');
     }
 
     public function getAttributeCombinations(Product $product)
