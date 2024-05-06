@@ -182,14 +182,17 @@ class Custompricerule extends Module
 
     public function getGroups()
     {
-        return Db::getInstance()->executeS("SELECT `id_group` as 'id_option', `name` FROM `" . _DB_PREFIX_ . 'group_lang`');
+        $langId = Configuration::get('PS_LANG_DEFAULT');
+        return Db::getInstance()->executeS("SELECT `id_group` as 'id_option', `name` FROM `" . _DB_PREFIX_ . "group_lang` WHERE `id_lang` = $langId");
     }
 
     public function getCustomPriceRules()
     {
+        $langId = Configuration::get('PS_LANG_DEFAULT');
         return Db::getInstance()->executeS("SELECT cpr.*, gl.name as 'group_name'
-        FROM `" . _DB_PREFIX_ . 'custom_price_rule` cpr 
-        JOIN `' . _DB_PREFIX_ . 'group_lang` gl ON cpr.id_group = gl.id_group;');
+        FROM `" . _DB_PREFIX_ . "custom_price_rule` cpr 
+        JOIN `" . _DB_PREFIX_ . "group_lang` gl ON cpr.id_group = gl.id_group
+        WHERE gl.`id_lang` = $langId");
     }
 
     public function isUsingNewTranslationSystem()

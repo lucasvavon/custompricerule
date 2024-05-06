@@ -49,6 +49,7 @@ class AdminCustomPriceRuleController extends ModuleAdminController
             $this->ajaxDie(json_encode($response));
         }
         $response = ['success' => true, 'message' => $this->trans('The rule has been successfully deleted.', [], 'Modules.Custompricerule.Admin')];
+        $this->ajaxDie(json_encode($response));
     }
 
     public function applyPriceRule($groupId, $coefficient)
@@ -125,9 +126,7 @@ class AdminCustomPriceRuleController extends ModuleAdminController
 
     public function deletePriceRule($id_price_rule, $groupId)
     {
-        return
-            Db::getInstance()->delete('specific_price', "id_group = $groupId AND id_customer = 0 AND id_specific_price_rule = 0")
-            && Db::getInstance()->delete('custom_price_rule', "id_price_rule = $id_price_rule");
+        return Db::getInstance()->delete('specific_price', "id_group = $groupId AND id_customer = 0 AND id_specific_price_rule = 0") && Db::getInstance()->delete('custom_price_rule', "id_price_rule = $id_price_rule");
     }
 
     public function getProducts()
