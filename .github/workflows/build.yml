@@ -7,11 +7,11 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
-              uses: actions/checkout@v2.0.0
+              uses: actions/checkout@v4
 
             # Remove development files
             - name: Clean-up project
-              uses: PrestaShopCorp/github-action-clean-before-deploy@v1.0
+              uses: PrestaShopCorp/github-action-clean-before-deploy@v2.0
 
             # Zip files and upload to artifacts list
             - name: Create & upload artifact
