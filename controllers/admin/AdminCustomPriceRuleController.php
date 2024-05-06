@@ -17,6 +17,9 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
+if (!defined('_PS_VERSION_')) {
+    exit;
+}
 
 class AdminCustomPriceRuleController extends ModuleAdminController
 {
@@ -59,13 +62,13 @@ class AdminCustomPriceRuleController extends ModuleAdminController
 
         foreach ($products as $item) {
             $product = new Product($item['id_product']);
-            $wholesalePriceProduct = floatval($product->wholesale_price);
+            $wholesalePriceProduct = (float) $product->wholesale_price;
 
             $attributes = $this->getAttributeCombinations($product);
 
             if (!empty($attributes)) {
                 foreach ($attributes as $attribute) {
-                    $wholesalePriceAttribute = floatval($attribute['wholesale_price']);
+                    $wholesalePriceAttribute = (float) $attribute['wholesale_price'];
                     if ($wholesalePriceAttribute <= 0) {
                         continue;
                     }
@@ -126,7 +129,7 @@ class AdminCustomPriceRuleController extends ModuleAdminController
 
     public function deletePriceRule($id_price_rule, $groupId)
     {
-        return Db::getInstance()->delete('specific_price', "id_group = $groupId AND id_customer = 0 AND id_specific_price_rule = 0") && Db::getInstance()->delete('custom_price_rule', "id_price_rule = $id_price_rule");
+        return Db::getInstance()->delete('specific_price', "id_group = $groupId AND id_customer = 0 AND id_cart = 0 AND id_specific_price_rule = 0") && Db::getInstance()->delete('custom_price_rule', "id_price_rule = $id_price_rule");
     }
 
     public function getProducts()
