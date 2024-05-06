@@ -55,22 +55,3 @@
         </div>
     </div>
 </div>
-<style>
-    #content {
-        padding: 110px 200px 100px
-    }
-
-    #content .loaderAdd-container,
-    #content .loaderDelete-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(255, 255, 255, 0.7);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-    }
-</style>
