@@ -36,14 +36,15 @@ class Custompricerule extends Module
         $this->tab = 'administration';
         $this->version = '1.0.0';
         $this->author = 'Piment Bleu';
-        $this->need_instance = 1;
+        $this->need_instance = 0;
 
         $this->bootstrap = false;
 
         parent::__construct();
 
-        $this->displayName = $this->l('Custom Price Rule');
-        $this->description = $this->l('Custom Price Rule Description');
+        $this->displayName = $this->trans('Custom Price Rule', [], 'Modules.Custompricerule.Admin');
+        $this->description = $this->trans('Custom Price Rule Description', [], 'Modules.Custompricerule.Admin');
+        $this->confirmUninstall = $this->trans('Are you sure you want to uninstall?', [], 'Modules.Custompricerule.Admin');
 
         $this->ps_versions_compliancy = ['min' => '1.7', 'max' => _PS_VERSION_];
     }
@@ -54,7 +55,6 @@ class Custompricerule extends Module
         return parent::install() &&
             $this->installDb() &&
             $this->registerHook('displayBackOfficeHeader') &&
-            $this->registerHook('actionProductPriceCalculation') &&
             $this->registerHook('actionObjectProductUpdateAfter');
     }
 
@@ -88,7 +88,7 @@ class Custompricerule extends Module
     public function getContent()
     {
         // display any message, then the form
-        return $this->displayHelpBox() . $this->displayForm() . $this->displayRulesList()/*  . $this->displayVue() */ ;
+        return $this->displayHelpBox() . $this->displayForm() . $this->displayRulesList();
     }
 
     /**
@@ -98,14 +98,6 @@ class Custompricerule extends Module
     public function displayRulesList()
     {
         $rules = $this->getCustomPriceRules();
-        foreach ($rules as $rule) {
-            date_default_timezone_set('Europe/Paris');
-            $timestamp = strtotime($rule['date_add']);
-            $rule['date_add'] = (string) date("l, j F Y à H:i", $timestamp);
-            echo $rule['date_add'];
-        }
-        var_dump($rules);
-        unset($rule);
         $this->context->smarty->assign(['rules' => $rules]);
         return $this->display(__FILE__, 'views/templates/admin/price_rule-list.tpl');
 
@@ -204,6 +196,11 @@ class Custompricerule extends Module
         return Db::getInstance()->executeS("SELECT cpr.*, gl.name as 'group_name'
         FROM `" . _DB_PREFIX_ . "custom_price_rule` cpr 
         JOIN `" . _DB_PREFIX_ . "group_lang` gl ON cpr.id_group = gl.id_group;");
+    }
+
+    public function isUsingNewTranslationSystem()
+    {
+        return true;
     }
 
 }

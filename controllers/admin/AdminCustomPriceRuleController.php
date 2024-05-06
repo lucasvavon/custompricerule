@@ -13,10 +13,10 @@ class AdminCustomPriceRuleController extends ModuleAdminController
         $coefficient = (int) Tools::getValue('coefficient');
 
         if (!$this->applyPriceRule($groupId, $coefficient)) {
-            $response = ['success' => false, 'message' => $this->l('The rule was not applied correctly. Some products have not been processed.')];
+            $response = ['success' => false, 'message' => $this->trans('The rule was not applied correctly. Some products have not been processed.', [], 'Modules.Custompricerule.Admin')];
             $this->ajaxDie(json_encode($response));
         }
-        $response = ['success' => true, 'message' => $this->l('The rule has been successfully applied.')];
+        $response = ['success' => true, 'message' => $this->trans('The rule has been successfully applied.', [], 'Modules.Custompricerule.Admin')];
         $this->ajaxDie(json_encode($response));
 
     }
@@ -28,15 +28,11 @@ class AdminCustomPriceRuleController extends ModuleAdminController
         $groupId = (int) Tools::getValue('id_group');
 
         if (!$this->deletePriceRule($idPriceRule, $groupId)) {
-            $response = ['success' => false, 'message' => $this->l('Deleting the rule failed.')];
+            $response = ['success' => false, 'message' => $this->trans('Deleting the rule failed.', [], 'Modules.Custompricerule.Admin')];
             $this->ajaxDie(json_encode($response));
         }
-        $response = ['success' => true, 'message' => $this->l('The rule has been successfully deleted.')];
-        $this->ajaxDie(json_encode($response));
-
+        $response = ['success' => true, 'message' => $this->trans('The rule has been successfully deleted.', [], 'Modules.Custompricerule.Admin')];
     }
-
-
 
     public function applyPriceRule($groupId, $coefficient)
     {

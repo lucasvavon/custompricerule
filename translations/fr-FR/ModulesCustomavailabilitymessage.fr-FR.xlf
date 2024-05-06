@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="apb7w5hp3lofr8m" source-language="fr-FR" target-language="fr-FR" datatype="plaintext">
+    <body>
+      <trans-unit id="eadf366a2b7a64e7c7bcbe7451891de6">
+        <source>Custom Availability Message</source>
+        <target>Message de disponibilité Personnalisé</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="79307eca0faf3d8286431585631bbad5">
+        <source>Display custom availability messages on product page.</source>
+        <target>Affiche les messages de disponibilité personnalisés dans la page produit.</target>
+        <note>Line: </note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -8,18 +8,18 @@
     </div>
 
     <div class="puik-card puik-card--default" style="margin-bottom: 20px;">
-        <h3>{l s='Rules list' mod='custompricerule'}</h3>
+        <h3>{l s='Rules list' d='Modules.Custompricerule.Admin'}</h3>
         <div class="form-wrapper">
             <div class="puik-button-group" role="group" aria-label="Position selection">
                 <div class="puik-table__container">
                     <table class="puik-table puik-table--full-width">
                         <thead>
                             <tr>
-                                <th>{l s='ID' mod='custompricerule'}</th>
-                                <th>{l s='Group' mod='custompricerule'}</th>
-                                <th>{l s='Coefficient (in %)' mod='custompricerule'}</th>
-                                <th>{l s='Date' mod='custompricerule'}</th>
-                                <th>{l s='Actions' mod='custompricerule'}</th>
+                                <th>{l s='ID' d='Modules.Custompricerule.Admin'}</th>
+                                <th>{l s='Group' d='Modules.Custompricerule.Admin'}</th>
+                                <th>{l s='Coefficient (in %)' d='Modules.Custompricerule.Admin'}</th>
+                                <th>{l s='Date' d='Modules.Custompricerule.Admin'}</th>
+                                <th>{l s='Actions' d='Modules.Custompricerule.Admin'}</th>
                             </tr>
                         </thead>
                         {if $rules}
@@ -45,7 +45,7 @@
                         <tbody style="text-align: center;">
                             <tr>
                                 <td style="padding: 0.5rem;" colspan="5">{l s='No rules defined'
-                                    mod='custompricerule'}</td>
+                                    d='Modules.Custompricerule.Admin'}</td>
                             </tr>
                         </tbody>
                         {/if}

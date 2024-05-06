@@ -6,10 +6,10 @@
         </div>
     </div>
     <div class="puik-card puik-card--default" style="margin-bottom: 20px;">
-        <h3>{l s='Add a rule' mod='custompricerule'}</h3>
+        <h3>{l s='Add a rule' d='Modules.Custompricerule.Admin'}</h3>
         <div>
             <div class="form-group">
-                <label for="exampleFormControlSelect1">{l s='Group' mod='custompricerule'}</label>
+                <label for="exampleFormControlSelect1">{l s='Group' d='Modules.Custompricerule.Admin'}</label>
                 <select class="form-control" id="groupSelect" name="group_id">
                     {foreach from=$groups item=group}
                     <option value="{$group.id_option}">{$group.name}</option>
@@ -17,11 +17,11 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="input1">{l s='Coefficient (in %)' mod='custompricerule'}</label>
+                <label for="input1">{l s='Coefficient (in %)' d='Modules.Custompricerule.Admin'}</label>
                 <input class="form-control form-control-lg" type="text" id="coefficient" name="coefficient" required>
             </div>
         </div>
         <button type="submit" class="puik-button puik-button--primary puik-button--md" style="width: max-content;">{l
-            s='Apply rule' mod='custompricerule'}</button>
+            s='Apply rule' d='Modules.Custompricerule.Admin'}</button>
     </div>
 </form>
