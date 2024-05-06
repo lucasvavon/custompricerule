@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file original="admin-dev" source-language="fr-FR" target-language="fr-FR" datatype="plaintext">
+  <file source-language="fr-FR" target-language="fr-FR"
+    datatype="plaintext">
     <body>
+      <trans-unit id="29aab9b92a82ba34b99b4ea2bf18672d">
+        <source>Custom Price Rule</source>
+        <target>Règle de prix personnalisée</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="e238c331e6a90b54106fe9e4632eafe4">
+        <source>Custom Price Rule Description</source>
+        <target>Description de Règle de prix personnalisée</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="876f23178c29dc2552c0b48bf23cd9bd">
+        <source>Are you sure you want to uninstall?</source>
+        <target>Êtes-vous sûr de vouloir désinstaller ?</target>
+        <note>Line: </note>
+      </trans-unit>
       <trans-unit id="3bf7e2e9fcdac42f4986893db9426188">
         <source>The rule was not applied correctly. Some products have not been processed.</source>
-        <target>La règle n'a pas été appliquée correctement. Certains produits n'ont pas été traités.</target>
+        <target>La règle n'a pas été appliquée correctement. Certains produits n'ont pas été
+          traités.</target>
         <note>Line: </note>
       </trans-unit>
       <trans-unit id="aaa44d9c8653089cbc7c3181f06ad0b1">
@@ -20,21 +37,6 @@
       <trans-unit id="8c8c0d82034edbbff80a025883fdd14a">
         <source>The rule has been successfully deleted.</source>
         <target>La règle a été supprimée avec succès.</target>
-        <note>Line: </note>
-      </trans-unit>
-      <trans-unit id="29aab9b92a82ba34b99b4ea2bf18672d">
-        <source>Custom Price Rule</source>
-        <target>Règle de prix personnalisée</target>
-        <note>Line: </note>
-      </trans-unit>
-      <trans-unit id="e238c331e6a90b54106fe9e4632eafe4">
-        <source>Custom Price Rule Description</source>
-        <target>Description de Règle de prix personnalisée</target>
-        <note>Line: </note>
-      </trans-unit>
-      <trans-unit id="876f23178c29dc2552c0b48bf23cd9bd">
-        <source>Are you sure you want to uninstall?</source>
-        <target>Êtes-vous sûr de vouloir désinstaller ?</target>
         <note>Line: </note>
       </trans-unit>
       <trans-unit id="dd593f8a542ab628cbba98c709255e60">
@@ -55,12 +57,6 @@
       <trans-unit id="6583f7ad588f356bf8edaf53d6b1d94e">
         <source>Apply rule</source>
         <target>Appliquer la règle</target>
-        <note>Line: </note>
-      </trans-unit>
-      <trans-unit id="994b313777083b3573052da09091d476">
-        <source>This module lets you define a new sales price rule for a specific customer group. You apply a chosen
-    coefficient to the purchase price of each product, to define their new price.</source>
-        <target>Ce module vous permet de définir une nouvelle règle de prix de vente pour un groupe spécifique de clients. Vous appliquez un coefficient choisi au prix d'achat de chaque produit, pour obtenir leur nouveau prix.</target>
         <note>Line: </note>
       </trans-unit>
       <trans-unit id="ceadfe06612eda23e701b8b5906db2cb">
@@ -86,6 +82,15 @@
       <trans-unit id="32c36730dfb18cc618149ee86ab4b467">
         <source>No rules defined</source>
         <target>Aucune règle définie</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="dc99f097404cfc5245ddc9af8759998b">
+        <source>This module lets you define a new sales price rule for a specific customer group.
+          You apply a chosen
+          coefficient to the purchase price of each product, to define their new price.</source>
+        <target>Ce module vous permet de définir une nouvelle règle de prix de vente pour un groupe
+          spécifique de clients. Vous appliquez un coefficient choisi au prix d'achat de chaque
+          produit, pour obtenir leur nouveau prix.</target>
         <note>Line: </note>
       </trans-unit>
     </body>
