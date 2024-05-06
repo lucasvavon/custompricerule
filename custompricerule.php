@@ -26,7 +26,7 @@ class Custompricerule extends Module
     public function __construct()
     {
         $this->name = 'custompricerule';
-        $this->tab = 'administration';
+        $this->tab = 'pricing_promotion';
         $this->version = '1.0.0';
         $this->author = 'Piment Bleu';
         $this->need_instance = 0;
