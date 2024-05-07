@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file original="apb7w5hp3lofr8m" source-language="fr-FR" target-language="fr-FR"
-    datatype="plaintext">
+  <file original="apb7w5hp3lofr8m" source-language="fr-FR" target-language="fr-FR" datatype="plaintext">
     <body>
       <trans-unit id="29aab9b92a82ba34b99b4ea2bf18672d">
         <source>Custom Price Rule</source>
@@ -42,6 +41,11 @@
       <trans-unit id="dd593f8a542ab628cbba98c709255e60">
         <source>Add a rule</source>
         <target>Ajouter une règle</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="9f82518d468b9fee614fcc92f76bb163">
+        <source>Shop</source>
+        <target>Boutique</target>
         <note>Line: </note>
       </trans-unit>
       <trans-unit id="03937134cedab9078be39a77ee3a48a0">
@@ -85,12 +89,9 @@
         <note>Line: </note>
       </trans-unit>
       <trans-unit id="dc99f097404cfc5245ddc9af8759998b">
-        <source>This module lets you define a new sales price rule for a specific customer group.
-          You apply a chosen
-          coefficient to the purchase price of each product, to define their new price.</source>
-        <target>Ce module vous permet de définir une nouvelle règle de prix de vente pour un groupe
-          spécifique de clients. Vous appliquez un coefficient choisi au prix d'achat de chaque
-          produit, pour obtenir leur nouveau prix.</target>
+        <source>This module lets you define a new sales price rule for a specific customer group. You apply a chosen
+        coefficient to the purchase price of each product, to define their new price.</source>
+        <target>Ce module vous permet de définir une nouvelle règle de prix de vente pour un groupe spécifique de clients. Vous appliquez un coefficient choisi au prix d'achat de chaque produit, pour obtenir leur nouveau prix.</target>
         <note>Line: </note>
       </trans-unit>
     </body>
