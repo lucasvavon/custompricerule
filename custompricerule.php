@@ -149,8 +149,6 @@ class Custompricerule extends Module
         $wholesale_price = $combination->wholesale_price;
         $rules = $this->getCustomPriceRules();
 
-        PrestaShopLogger::addLog("hookActionProductAttributeUpdate : $productAttributeId -> $wholesale_price");
-
         foreach ($rules as $rule) {
             $coef = (int) $rule['coef'] / 100;
             $amountToAdd = $wholesale_price * $coef;
