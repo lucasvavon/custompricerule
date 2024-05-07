@@ -54,7 +54,7 @@
                                         <button type="button"
                                             class="puik-button puik-button--destructive puik-button--md"
                                             aria-label="Select delete"
-                                            onclick="deletePriceRule({$rule.id_price_rule}, {$rule.id_group})">
+                                            onclick="deletePriceRule({$rule.id_price_rule}, {$rule.id_shop}, {$rule.id_group})">
                                             <span class="puik-icon material-icons-round"
                                                 style="font-size: 20px;">delete</span>
                                         </button>

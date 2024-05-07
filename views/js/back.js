@@ -61,7 +61,7 @@ function applyPriceRule(id_shop, id_group, coefficient) {
         });
 }
 
-function deletePriceRule(id_price_rule, id_group) {
+function deletePriceRule(id_price_rule, id_shop, id_group) {
     const loaderDelete = document.querySelector(
         "#content .loaderDelete-container",
     );
@@ -71,9 +71,9 @@ function deletePriceRule(id_price_rule, id_group) {
         ajax: true,
         action: "DeletePriceRule",
         token: token,
+        id_price_rule: id_price_rule,
         id_shop: id_shop,
         id_group: id_group,
-        id_price_rule: id_price_rule,
     };
     $.ajax({
         type: "POST",
