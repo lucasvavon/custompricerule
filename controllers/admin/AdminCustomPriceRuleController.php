@@ -31,10 +31,11 @@ class AdminCustomPriceRuleController extends ModuleAdminController
 
     public function displayAjaxApplyPriceRule()
     {
+        $shopId = (int) Tools::getValue('id_shop');
         $groupId = (int) Tools::getValue('id_group');
         $coefficient = (int) Tools::getValue('coefficient');
 
-        if (!$this->applyPriceRule($groupId, $coefficient)) {
+        if (!$this->applyPriceRule($shopId, $groupId, $coefficient)) {
             $response = ['success' => false, 'message' => $this->trans('The rule was not applied correctly. Some products have not been processed.', [], 'Modules.Custompricerule.Admin')];
             $this->ajaxDie(json_encode($response));
         }
@@ -55,7 +56,7 @@ class AdminCustomPriceRuleController extends ModuleAdminController
         $this->ajaxDie(json_encode($response));
     }
 
-    public function applyPriceRule($groupId, $coefficient)
+    public function applyPriceRule($shopId, $groupId, $coefficient)
     {
         $result = true;
         $products = $this->getProducts();
@@ -72,17 +73,18 @@ class AdminCustomPriceRuleController extends ModuleAdminController
                     if ($wholesalePriceAttribute <= 0) {
                         continue;
                     }
-                    $result = $this->addSpecificPrice($product->id, $groupId, $coefficient, $wholesalePriceAttribute, $attribute['id_product_attribute']);
+                    $result = $this->addSpecificPrice($product->id, $shopId, $groupId, $coefficient, $wholesalePriceAttribute, $attribute['id_product_attribute']);
                 }
             } else {
                 if ($wholesalePriceProduct <= 0) {
                     continue;
                 }
-                $result = $this->addSpecificPrice($product->id, $groupId, $coefficient, $wholesalePriceProduct);
+                $result = $this->addSpecificPrice($product->id, $shopId, $groupId, $coefficient, $wholesalePriceProduct);
             }
         }
 
         $result = Db::getInstance()->insert('custom_price_rule', [
+            'id_shop' => (int) $shopId,
             'id_group' => (int) $groupId,
             'coef' => (int) $coefficient,
             'date_add' => date('Y-m-d H:i:s'),
@@ -91,11 +93,9 @@ class AdminCustomPriceRuleController extends ModuleAdminController
         return $result;
     }
 
-    public function addSpecificPrice($productId, $groupId, $coefficient, $wholesalePrice, $attributeId = 0)
+    public function addSpecificPrice($productId, $shopId, $groupId, $coefficient, $wholesalePrice, $attributeId = 0)
     {
         $newPrice = $this->calculateNewPrice($coefficient, $wholesalePrice);
-
-        PrestaShopLogger::addLog("$productId, $groupId, $coefficient, $wholesalePrice");
 
         $specificPrice = new SpecificPrice();
         $specificPrice->id_product = (int) $productId;
@@ -103,7 +103,7 @@ class AdminCustomPriceRuleController extends ModuleAdminController
         $specificPrice->reduction = 0;
         $specificPrice->reduction_type = 'amount';
         $specificPrice->reduction_tax = 1;
-        $specificPrice->id_shop = 0;
+        $specificPrice->id_shop = (int) $shopId;
         $specificPrice->id_cart = 0;
         $specificPrice->id_currency = 0;
         $specificPrice->id_country = 0;
@@ -114,7 +114,6 @@ class AdminCustomPriceRuleController extends ModuleAdminController
         $specificPrice->from = date('Y-m-d H:i:s');
         $specificPrice->to = '0000-00-00 00:00:00';
 
-        /* $addedPriceId = $specificPrice->id; */
         return $specificPrice->save();
     }
 
@@ -127,9 +126,9 @@ class AdminCustomPriceRuleController extends ModuleAdminController
         return (float) $newPrice;
     }
 
-    public function deletePriceRule($id_price_rule, $groupId)
+    public function deletePriceRule($id_price_rule, $shopId, $groupId)
     {
-        return Db::getInstance()->delete('specific_price', "id_group = $groupId AND id_customer = 0 AND id_cart = 0 AND id_specific_price_rule = 0") && Db::getInstance()->delete('custom_price_rule', "id_price_rule = $id_price_rule");
+        return Db::getInstance()->delete('specific_price', "id_shop = $shopId AND id_group = $groupId AND id_customer = 0 AND id_cart = 0 AND id_specific_price_rule = 0") && Db::getInstance()->delete('custom_price_rule', "id_price_rule = $id_price_rule");
     }
 
     public function getProducts()

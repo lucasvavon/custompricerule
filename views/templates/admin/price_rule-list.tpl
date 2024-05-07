@@ -34,6 +34,7 @@
                             <thead>
                                 <tr>
                                     <th>{l s='ID' d='Modules.Custompricerule.Admin'}</th>
+                                    <th>{l s='Shop' d='Modules.Custompricerule.Admin'}</th>
                                     <th>{l s='Group' d='Modules.Custompricerule.Admin'}</th>
                                     <th>{l s='Coefficient (in %)' d='Modules.Custompricerule.Admin'}</th>
                                     <th>{l s='Date' d='Modules.Custompricerule.Admin'}</th>
@@ -45,6 +46,7 @@
                                 {foreach from=$rules item=rule}
                                 <tr>
                                     <td style="padding: 0.5rem;">{$rule.id_price_rule}</td>
+                                    <td style="padding: 0.5rem;">{$rule.shop_name}</td>
                                     <td style="padding: 0.5rem;">{$rule.group_name}</td>
                                     <td style="padding: 0.5rem;">{$rule.coef}</td>
                                     <td style="padding: 0.5rem;">{$rule.date_add|date_format:"%d/%m/%Y"}</td>

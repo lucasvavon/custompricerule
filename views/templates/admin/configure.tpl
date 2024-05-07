@@ -27,8 +27,16 @@
             <h3 class="puik-h3">{l s='Add a rule' d='Modules.Custompricerule.Admin'}</h3>
             <div>
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">{l s='Group' d='Modules.Custompricerule.Admin'}</label>
-                    <select class="form-control" id="groupSelect" name="group_id">
+                    <label for="groupShop">{l s='Shop' d='Modules.Custompricerule.Admin'}</label>
+                    <select class="form-control" id="groupShop" name="groupShop">
+                        {foreach from=$shops item=shop}
+                        <option value="{$shop.id_shop}">{$shop.name}</option>
+                        {/foreach}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="groupSelect">{l s='Group' d='Modules.Custompricerule.Admin'}</label>
+                    <select class="form-control" id="groupSelect" name="groupSelect">
                         {foreach from=$groups item=group}
                         <option value="{$group.id_option}">{$group.name}</option>
                         {/foreach}

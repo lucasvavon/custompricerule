@@ -18,77 +18,80 @@
  */
 
 document.addEventListener("DOMContentLoaded", function () {
-	const form = document.getElementById("priceRuleForm");
-	form.addEventListener("submit", function (e) {
-		e.preventDefault();
-		const id_group = document.getElementById("groupSelect").value;
-		const coefficient = document.getElementById("coefficient").value;
-		applyPriceRule(id_group, coefficient);
-	});
+    const form = document.getElementById("priceRuleForm");
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const id_shop = document.getElementById("groupShop").value;
+        const id_group = document.getElementById("groupSelect").value;
+        const coefficient = document.getElementById("coefficient").value;
+        applyPriceRule(id_shop, id_group, coefficient);
+    });
 });
 
-function applyPriceRule(id_group, coefficient) {
-	const loaderAdd = document.querySelector("#content .loaderAdd-container");
-	loaderAdd.style.display = "flex";
-	var postdata = {
-		controller: "AdminCustomPriceRule",
-		ajax: true,
-		action: "ApplyPriceRule",
-		token: token,
-		id_group: id_group,
-		coefficient: coefficient,
-	};
-	$.ajax({
-		type: "POST",
-		cache: false,
-		dataType: "json",
-		url: "index.php",
-		data: postdata,
-	})
-		.done(function (response) {
-			loaderAdd.style.display = "none";
-			if (response.success) {
-				$.growl.notice({ title: "", message: response.message });
-				location.reload();
-			} else {
-				$.growl.error({ title: "", message: response.message });
-			}
-		})
-		.fail(function (response) {
-			console.error(response);
-		});
+function applyPriceRule(id_shop, id_group, coefficient) {
+    const loaderAdd = document.querySelector("#content .loaderAdd-container");
+    loaderAdd.style.display = "flex";
+    var postdata = {
+        controller: "AdminCustomPriceRule",
+        ajax: true,
+        action: "ApplyPriceRule",
+        token: token,
+        id_shop: id_shop,
+        id_group: id_group,
+        coefficient: coefficient,
+    };
+    $.ajax({
+        type: "POST",
+        cache: false,
+        dataType: "json",
+        url: "index.php",
+        data: postdata,
+    })
+        .done(function (response) {
+            loaderAdd.style.display = "none";
+            if (response.success) {
+                $.growl.notice({ title: "", message: response.message });
+                location.reload();
+            } else {
+                $.growl.error({ title: "", message: response.message });
+            }
+        })
+        .fail(function (response) {
+            console.error(response);
+        });
 }
 
 function deletePriceRule(id_price_rule, id_group) {
-	const loaderDelete = document.querySelector(
-		"#content .loaderDelete-container"
-	);
-	loaderDelete.style.display = "flex";
-	var postdata = {
-		controller: "AdminCustomPriceRule",
-		ajax: true,
-		action: "DeletePriceRule",
-		token: token,
-		id_price_rule: id_price_rule,
-		id_group: id_group,
-	};
-	$.ajax({
-		type: "POST",
-		cache: false,
-		dataType: "json",
-		url: "index.php",
-		data: postdata,
-	})
-		.done(function (response) {
-			loaderDelete.style.display = "none";
-			if (response.success) {
-				$.growl.notice({ title: "", message: response.message });
-				location.reload();
-			} else {
-				$.growl.error({ title: "", message: response.message });
-			}
-		})
-		.fail(function (response) {
-			console.error(response);
-		});
+    const loaderDelete = document.querySelector(
+        "#content .loaderDelete-container",
+    );
+    loaderDelete.style.display = "flex";
+    var postdata = {
+        controller: "AdminCustomPriceRule",
+        ajax: true,
+        action: "DeletePriceRule",
+        token: token,
+        id_shop: id_shop,
+        id_group: id_group,
+        id_price_rule: id_price_rule,
+    };
+    $.ajax({
+        type: "POST",
+        cache: false,
+        dataType: "json",
+        url: "index.php",
+        data: postdata,
+    })
+        .done(function (response) {
+            loaderDelete.style.display = "none";
+            if (response.success) {
+                $.growl.notice({ title: "", message: response.message });
+                location.reload();
+            } else {
+                $.growl.error({ title: "", message: response.message });
+            }
+        })
+        .fail(function (response) {
+            console.error(response);
+        });
 }

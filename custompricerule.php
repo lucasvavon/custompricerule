@@ -60,6 +60,7 @@ class Custompricerule extends Module
         return Db::getInstance()->execute(
             'CREATE TABLE IF NOT EXISTS  `' . _DB_PREFIX_ . 'custom_price_rule` (
             `id_price_rule` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+            `id_shop` INT UNSIGNED NOT NULL,
 			`id_group` INT UNSIGNED NOT NULL,
 			`coef` int(3) NOT NULL,
 			`date_add` datetime,
@@ -105,6 +106,7 @@ class Custompricerule extends Module
     public function displayForm()
     {
         $this->context->smarty->assign(['groups' => $this->getGroups()]);
+        $this->context->smarty->assign(['shops' => $this->getShops()]);
 
         return $this->display(__FILE__, 'views/templates/admin/configure.tpl');
     }
@@ -180,6 +182,11 @@ class Custompricerule extends Module
         return Db::getInstance()->executeS('SELECT * FROM `' . _DB_PREFIX_ . 'specific_price` WHERE `id_group` = 8');
     }
 
+    public function getShops()
+    {
+        return Db::getInstance()->executeS('SELECT * FROM `' . _DB_PREFIX_ . 'shop`');
+    }
+
     public function getGroups()
     {
         $langId = Configuration::get('PS_LANG_DEFAULT');
@@ -191,9 +198,10 @@ class Custompricerule extends Module
     {
         $langId = Configuration::get('PS_LANG_DEFAULT');
 
-        return Db::getInstance()->executeS('SELECT cpr.*, gl.name as group_name
+        return Db::getInstance()->executeS('SELECT cpr.*, gl.name as group_name,  s.name as shop_name
         FROM `' . _DB_PREFIX_ . 'custom_price_rule` cpr 
         JOIN `' . _DB_PREFIX_ . 'group_lang` gl ON cpr.id_group = gl.id_group
+        JOIN `' . _DB_PREFIX_ . 'shop` s ON cpr.id_shop = s.id_shop
         WHERE gl.`id_lang` = ' . $langId);
     }
 
