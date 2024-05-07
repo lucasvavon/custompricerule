@@ -46,9 +46,10 @@ class AdminCustomPriceRuleController extends ModuleAdminController
     public function displayAjaxDeletePriceRule()
     {
         $idPriceRule = (int) Tools::getValue('id_price_rule');
+        $shopId = (int) Tools::getValue('id_shop');
         $groupId = (int) Tools::getValue('id_group');
 
-        if (!$this->deletePriceRule($idPriceRule, $groupId)) {
+        if (!$this->deletePriceRule($idPriceRule, $shopId, $groupId)) {
             $response = ['success' => false, 'message' => $this->trans('Deleting the rule failed.', [], 'Modules.Custompricerule.Admin')];
             $this->ajaxDie(json_encode($response));
         }

@@ -65,7 +65,7 @@
                             {else}
                             <tbody style="text-align: center;">
                                 <tr>
-                                    <td style="padding: 0.5rem;" colspan="5">{l s='No rules defined'
+                                    <td style="padding: 0.5rem;" colspan="6">{l s='No rules defined'
                                         d='Modules.Custompricerule.Admin'}</td>
                                 </tr>
                             </tbody>
