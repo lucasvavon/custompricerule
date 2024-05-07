@@ -47,7 +47,8 @@ class Custompricerule extends Module
         return parent::install()
             && $this->installDb()
             && $this->registerHook('displayBackOfficeHeader')
-            && $this->registerHook('actionObjectProductUpdateAfter');
+            && $this->registerHook('actionObjectProductUpdateAfter')
+            && $this->registerHook('actionProductAttributeUpdate');
     }
 
     public function uninstall()
@@ -90,12 +91,9 @@ class Custompricerule extends Module
      *
      * @return string HTML code
      */
-    public function displayRulesList()
+    public function displayHelpBox()
     {
-        $rules = $this->getCustomPriceRules();
-        $this->context->smarty->assign(['rules' => $rules]);
-
-        return $this->display(__FILE__, 'views/templates/admin/price_rule-list.tpl');
+        return $this->display(__FILE__, 'views/templates/admin/help-box.tpl');
     }
 
     /**
@@ -116,45 +114,53 @@ class Custompricerule extends Module
      *
      * @return string HTML code
      */
-    public function displayHelpBox()
+    public function displayRulesList()
     {
-        return $this->display(__FILE__, 'views/templates/admin/help-box.tpl');
+        $rules = $this->getCustomPriceRules();
+        $this->context->smarty->assign(['rules' => $rules]);
+
+        return $this->display(__FILE__, 'views/templates/admin/price_rule-list.tpl');
     }
 
     public function hookActionObjectProductUpdateAfter($params)
     {
         // Retrieve the ID of product
         $productId = (int) $params['object']->id;
+        $product = new Product($productId);
+        $rules = $this->getCustomPriceRules();
 
-        PrestaShopLogger::addLog("modification : $productId", 2);
-        // new product object
-        /* $product = new Product($productId);
+        foreach ($rules as $rule) {
+            $coef = (int) $rule['coef'] / 100;
+            $amountToAdd = $product->wholesale_price * $coef;
+            $newPrice = $product->wholesale_price + $amountToAdd;
 
-        if (!Validate::isLoadedObject($product)) {
-            die('Product does not exist');
+            Db::getInstance()->update('specific_price', [
+                'price' => (float) $newPrice,
+                'from' => date('Y-m-d H:i:s'),
+            ], 'id_product = ' . $productId . ' AND id_group = ' . (int) $rule['id_group'] . ' AND id_shop = ' . (int) $rule['id_shop']);
         }
+    }
 
-        $newPrice = $product->wholesale_price * 1.25;
+    public function hookActionProductAttributeUpdate($params)
+    {
+        // Retrieve the ID of product attribute
+        $productAttributeId = (int) $params['id_product_attribute'];
+        $combination = new Combination($productAttributeId);
+        $wholesale_price = $combination->wholesale_price;
+        $rules = $this->getCustomPriceRules();
 
-        if ($newPrice) {
-            // Set specific price details
-            $specific_price = new SpecificPrice();
-            $specific_price->id_product = $productId;
-            $specific_price->id_customer = 0;
-            $specific_price->id_shop = 0; // 0 if you want this to apply to all shops
-            $specific_price->id_currency = 0; // 0 for all currencies
-            $specific_price->id_country = 0; // 0 for all countries
-            $specific_price->id_group = 8; // 0 for all groups
-            $specific_price->price = $newPrice; // Set a new price or use -1 to not change the product price
-            $specific_price->from_quantity = 1;  // The minimum quantity needed to apply the discount
-            $specific_price->reduction = 0; // 20% reduction. For amount reduction, use a value here and set reduction_type to 'amount'
-            $specific_price->reduction_type = 'amount'; // 'amount' for a fixed amount reduction
-            $specific_price->from = '0000-00-00 00:00:00'; // Starting date of the specific price
-            $specific_price->to = '0000-00-00 00:00:00'; // Ending date of the specific price
+        PrestaShopLogger::addLog("hookActionProductAttributeUpdate : $productAttributeId -> $wholesale_price");
 
-            // Save the new specific price
-            return $specific_price->add();
-        } */
+        foreach ($rules as $rule) {
+            $coef = (int) $rule['coef'] / 100;
+            $amountToAdd = $wholesale_price * $coef;
+            $newPrice = $wholesale_price + $amountToAdd;
+
+            Db::getInstance()->update('specific_price', [
+                'price' => (float) $newPrice,
+                'from' => date('Y-m-d H:i:s'),
+            ], 'id_product_attribute = ' . $productAttributeId . ' AND id_group = ' . (int) $rule['id_group'] . ' AND id_shop = ' . (int) $rule['id_shop']);
+        }
     }
 
     public function hookDisplayBackOfficeHeader()

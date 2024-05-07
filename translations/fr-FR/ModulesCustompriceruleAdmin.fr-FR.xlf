@@ -89,8 +89,7 @@
         <note>Line: </note>
       </trans-unit>
       <trans-unit id="dc99f097404cfc5245ddc9af8759998b">
-        <source>This module lets you define a new sales price rule for a specific customer group. You apply a chosen
-        coefficient to the purchase price of each product, to define their new price.</source>
+        <source>This module lets you define a new sales price rule for a specific customer group. You apply a chosen coefficient to the purchase price of each product, to define their new price.</source>
         <target>Ce module vous permet de définir une nouvelle règle de prix de vente pour un groupe spécifique de clients. Vous appliquez un coefficient choisi au prix d'achat de chaque produit, pour obtenir leur nouveau prix.</target>
         <note>Line: </note>
       </trans-unit>
