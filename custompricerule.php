@@ -46,7 +46,7 @@ class Custompricerule extends Module
         return parent::install()
             && $this->installDb()
             && $this->registerHook('displayBackOfficeHeader')
-            && $this->registerHook('actionProductUpdate')
+            && $this->registerHook('actionObjectProductUpdateAfter')
             && $this->registerHook('actionProductAttributeUpdate');
     }
 
