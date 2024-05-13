@@ -1,4 +1,5 @@
 /vendor/
+/_vendor/
 /composer.*
 /php-cs-fixer
 /.php-cs-fixer.cache

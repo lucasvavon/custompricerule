@@ -29,9 +29,8 @@ class Custompricerule extends Module
         $this->tab = 'pricing_promotion';
         $this->version = '1.0.0';
         $this->author = 'Piment Bleu';
-        $this->need_instance = 0;
-
-        $this->bootstrap = false;
+        $this->need_instance = 1;
+        $this->bootstrap = true;
 
         parent::__construct();
 
@@ -47,7 +46,7 @@ class Custompricerule extends Module
         return parent::install()
             && $this->installDb()
             && $this->registerHook('displayBackOfficeHeader')
-            && $this->registerHook('actionObjectProductUpdateAfter')
+            && $this->registerHook('actionProductUpdate')
             && $this->registerHook('actionProductAttributeUpdate');
     }
 
@@ -137,7 +136,7 @@ class Custompricerule extends Module
             Db::getInstance()->update('specific_price', [
                 'price' => (float) $newPrice,
                 'from' => date('Y-m-d H:i:s'),
-            ], 'id_product = ' . $productId . ' AND id_group = ' . (int) $rule['id_group'] . ' AND id_shop = ' . (int) $rule['id_shop']);
+            ], 'id_product = ' . $productId . ' AND id_product_attribute = 0 AND id_group = ' . (int) $rule['id_group'] . ' AND id_shop = ' . (int) $rule['id_shop']);
         }
     }
 

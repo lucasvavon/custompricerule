@@ -34,3 +34,7 @@
     align-items: center;
     z-index: 9999;
 }
+
+.table thead>tr>th, .table tbody>tr>td {
+    text-align: center;
+}
