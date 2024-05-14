@@ -29,7 +29,7 @@ class AdminSellingPriceRuleController extends ModuleAdminController
         $this->ajax = true;
 
         parent::__construct();
-        
+
     }
 
     public function displayAjaxApplyPriceRule()
@@ -86,14 +86,23 @@ class AdminSellingPriceRuleController extends ModuleAdminController
         $this->ajaxDie(json_encode($response));
     }
 
+    public function displayAjaxDeleteAllExclusions()
+    {
+        if (!$this->deleteAllExclusions()) {
+            $response = ['success' => false, 'message' => $this->trans('Deleting all exclusions failed.', [], 'Modules.Sellingpricerule.Admin')];
+            $this->ajaxDie(json_encode($response));
+        }
+        $response = ['success' => true, 'message' => $this->trans('All exclusions have been successfully deleted.', [], 'Modules.Sellingpricerule.Admin')];
+        $this->ajaxDie(json_encode($response));
+    }
+
     public function applyPriceRule($shopId, $groupId, $coefficient)
     {
         $result = true;
         $products = $this->getProducts();
 
         foreach ($products as $item) {
-            if ($this->productExcluded($item['id_product'])) {
-                PrestaShopLogger::addLog('controller p excluded : ' . $item['id_product']);
+            if ($this->module->productExcluded($item['id_product'])) {
                 continue;
             }
             $product = new Product($item['id_product']);
@@ -152,6 +161,11 @@ class AdminSellingPriceRuleController extends ModuleAdminController
     public function deleteExclusion($exclusionId)
     {
         return Db::getInstance()->delete('selling_price_rule_exclusion', 'id_exclusion = ' . $exclusionId);
+    }
+
+    public function deleteAllExclusions()
+    {
+        return Db::getInstance()->execute('TRUNCATE TABLE ' . _DB_PREFIX_ . 'selling_price_rule_exclusion');
     }
 
     public function getProducts()

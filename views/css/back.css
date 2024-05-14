@@ -43,3 +43,18 @@
 .table tbody > tr > td {
     text-align: center;
 }
+
+.select2-container {
+    width: 100% !important;
+}
+
+#content .btn {
+    text-transform: capitalize;
+}
+
+.btn.btn-danger {
+    color: #fff;
+    background-color: #f54c3e;
+    border-color: #f54c3e;
+}
+

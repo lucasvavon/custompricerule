@@ -16,7 +16,6 @@
     * @copyright Since 2007 PrestaShop SA and Contributors
     * @license https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
     *}
-    
     <form action="" id="priceRuleForm">
         <div class="panel" id="fieldset_0" style="position: relative;">
 

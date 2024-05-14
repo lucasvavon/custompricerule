@@ -137,6 +137,10 @@ class Sellingpricerule extends Module
      */
     public function displayProductExclusion()
     {
+        $AdminProductLinkComponents = parse_url($this->context->link->getAdminLink('AdminProducts'));
+        parse_str($AdminProductLinkComponents['query'], $params);
+        $this->context->smarty->assign(['token' => $params['_token']]);
+        $this->context->smarty->assign(['hasExclusions' => $this->hasExclusions()]);
         $this->context->smarty->assign(['products' => $this->getProducts()]);
         $this->context->smarty->assign(['exclusions' => $this->getExclusions()]);
 
@@ -281,7 +285,12 @@ class Sellingpricerule extends Module
     public function productExcluded($productId): bool
     {
         $count = Db::getInstance()->getValue('SELECT COUNT(*) FROM ' . _DB_PREFIX_ . 'selling_price_rule_exclusion WHERE id_product = ' . (int) $productId);
-        PrestaShopLogger::addLog('SELECT COUNT(*) FROM ' . _DB_PREFIX_ . 'selling_price_rule_exclusion WHERE id_product = ' . (int) $productId . ' ==> ' . $count);
+        return $count > 0;
+    }
+
+    public function hasExclusions(): bool
+    {
+        $count = Db::getInstance()->getValue('SELECT COUNT(*) FROM ' . _DB_PREFIX_ . 'selling_price_rule_exclusion');
         return $count > 0;
     }
 

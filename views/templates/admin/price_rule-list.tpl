@@ -16,7 +16,6 @@
     * @copyright Since 2007 PrestaShop SA and Contributors
     * @license https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
     *}
-    <link rel="stylesheet" href="https://unpkg.com/@prestashopcorp/puik/dist/index.css" />
     <div class="panel" id="fieldset_1" style="position: relative;">
         <div class="loaderDelete-container" style="display:none;">
             <div class="puik-spinner-loader puik-spinner-loader--lg puik-spinner-loader--secondary" aria-live="polite"
