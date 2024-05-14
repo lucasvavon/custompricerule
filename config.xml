@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
 	<name>custompricerule</name>
-	<displayName><![CDATA[Custom Price Rule]]></displayName>
+	<displayName><![CDATA[Selling Price Rule]]></displayName>
 	<version><![CDATA[1.0.0]]></version>
-	<description><![CDATA[Custom Price Rule Description]]></description>
+	<description><![CDATA[Selling Price Rule Description]]></description>
 	<author><![CDATA[Piment Bleu]]></author>
 	<tab><![CDATA[pricing_promotion]]></tab>
 	<is_configurable>1</is_configurable>
-	<need_instance>0</need_instance>
+	<need_instance>1</need_instance>
 </module>

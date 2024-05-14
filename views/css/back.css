@@ -18,11 +18,15 @@
  */
 
 #content {
-    padding: 110px 200px 100px
+    padding: 110px 200px 100px;
 }
 
-#content .loaderAdd-container,
-#content .loaderDelete-container {
+#content
+    :is(
+        .loaderAdd-container,
+        .loaderDelete-container,
+        .loaderExclusion-container
+    ) {
     position: absolute;
     top: 0;
     left: 0;
@@ -35,6 +39,7 @@
     z-index: 9999;
 }
 
-.table thead>tr>th, .table tbody>tr>td {
+.table thead > tr > th,
+.table tbody > tr > td {
     text-align: center;
 }

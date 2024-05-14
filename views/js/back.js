@@ -26,13 +26,21 @@ document.addEventListener("DOMContentLoaded", function () {
         const coefficient = document.getElementById("coefficient").value;
         applyPriceRule(id_shop, id_group, coefficient);
     });
+
+    const exclusionForm = document.getElementById("exclusionForm");
+    exclusionForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const productIds = $("#productsInput").val();
+        addExclusion(productIds);
+    });
+    
 });
 
 function applyPriceRule(id_shop, id_group, coefficient) {
     const loaderAdd = document.querySelector("#content .loaderAdd-container");
     loaderAdd.style.display = "flex";
     var postdata = {
-        controller: "AdminCustomPriceRule",
+        controller: "AdminSellingPriceRule",
         ajax: true,
         action: "ApplyPriceRule",
         token: token,
@@ -67,7 +75,7 @@ function deletePriceRule(id_price_rule, id_shop, id_group) {
     );
     loaderDelete.style.display = "flex";
     var postdata = {
-        controller: "AdminCustomPriceRule",
+        controller: "AdminSellingPriceRule",
         ajax: true,
         action: "DeletePriceRule",
         token: token,
@@ -84,6 +92,68 @@ function deletePriceRule(id_price_rule, id_shop, id_group) {
     })
         .done(function (response) {
             loaderDelete.style.display = "none";
+            if (response.success) {
+                $.growl.notice({ title: "", message: response.message });
+                location.reload();
+            } else {
+                $.growl.error({ title: "", message: response.message });
+            }
+        })
+        .fail(function (response) {
+            console.error(response);
+        });
+}
+
+function addExclusion(productIds) {
+    const loaderExclusion = document.querySelector("#content .loaderExclusion-container");
+    loaderExclusion.style.display = "flex";
+    var postdata = {
+        controller: "AdminSellingPriceRule",
+        ajax: true,
+        action: "AddExclusion",
+        token: token,
+        productIds: productIds,
+    };
+    $.ajax({
+        type: "POST",
+        cache: false,
+        dataType: "json",
+        url: "index.php",
+        data: postdata,
+    })
+        .done(function (response) {
+            loaderExclusion.style.display = "none";
+            if (response.success) {
+                $.growl.notice({ title: "", message: response.message });
+                location.reload();
+            } else {
+                $.growl.error({ title: "", message: response.message });
+            }
+        })
+        .fail(function (response) {
+            console.error(response);
+        });
+}
+
+function deleteExclusion(id_exclusion) {
+    const loaderExclusion = document.querySelector("#content .loaderExclusion-container");
+    loaderExclusion.style.display = "flex";
+    var postdata = {
+        controller: "AdminSellingPriceRule",
+        ajax: true,
+        action: "DeleteExclusion",
+        token: token,
+        id_exclusion: id_exclusion,
+    };
+    $.ajax({
+        type: "POST",
+        cache: false,
+        dataType: "json",
+        url: "index.php",
+        data: postdata,
+    })
+        .done(function (response) {
+            loaderExclusion.style.display = "none";
             if (response.success) {
                 $.growl.notice({ title: "", message: response.message });
                 location.reload();

@@ -3,12 +3,12 @@
   <file original="apb7w5hp3lofr8m" source-language="fr-FR" target-language="fr-FR" datatype="plaintext">
     <body>
       <trans-unit id="29aab9b92a82ba34b99b4ea2bf18672d">
-        <source>Custom Price Rule</source>
+        <source>Selling Price Rule</source>
         <target>Règle de prix personnalisée</target>
         <note>Line: </note>
       </trans-unit>
       <trans-unit id="e238c331e6a90b54106fe9e4632eafe4">
-        <source>Custom Price Rule Description</source>
+        <source>Selling Price Rule Description</source>
         <target>Description de Règle de prix personnalisée</target>
         <note>Line: </note>
       </trans-unit>
@@ -89,7 +89,7 @@
         <note>Line: </note>
       </trans-unit>
       <trans-unit id="dc99f097404cfc5245ddc9af8759998b">
-        <source>This module lets you define a new sales price rule for a specific customer group. You apply a chosen coefficient to the purchase price of each product, to define their new price.</source>
+        <source>This module lets you define a new sales price rule for a specific Sellinger group. You apply a chosen coefficient to the purchase price of each product, to define their new price.</source>
         <target>Ce module vous permet de définir une nouvelle règle de prix de vente pour un groupe spécifique de clients. Vous appliquez un coefficient choisi au prix d'achat de chaque produit, pour obtenir leur nouveau prix.</target>
         <note>Line: </note>
       </trans-unit>

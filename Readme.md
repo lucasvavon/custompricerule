@@ -1,7 +1,7 @@
-# Custom Price Rule - PrestaShop Pricing Module
+# Selling Price Rule - PrestaShop Pricing Module
 
 ## Introduction
-**Custom Price Rule** is a PrestaShop module designed to help store owners automatically calculate selling prices based on purchasing costs. By applying user-defined markup rules, Custom Price Rule ensures that your products are always priced profitably according to your business strategy.
+**Selling Price Rule** is a PrestaShop module designed to help store owners automatically calculate selling prices based on purchasing costs. By applying user-defined markup rules, Selling Price Rule ensures that your products are always priced profitably according to your business strategy.
 
 ## Features
 - **Automatic Price Calculation:** Automatically set selling prices by applying a predefined markup to the purchase cost.
@@ -11,20 +11,20 @@
 
 ## Installation
 1. **Download the Module:**
-   Download the `custompricerule.zip` file from the Releases section.
+   Download the `sellingpricerule.zip` file from the Releases section.
 
 2. **Install via PrestaShop Admin:**
    - Go to your PrestaShop dashboard.
    - Navigate to "Modules" > "Module Manager".
-   - Click on "Upload a Module" and select the `custompricerule.zip` file.
+   - Click on "Upload a Module" and select the `sellingpricerule.zip` file.
    - Follow the prompts to complete the installation.
 
 3. **Verify Installation:**
-   After installation, go to "Modules" and ensure that `Custom Price Rule` is listed and active.
+   After installation, go to "Modules" and ensure that `Selling Price Rule` is listed and active.
 
 ## Configuration
 1. **Access the Configuration Panel:**
-   - In your PrestaShop admin panel, navigate to "Modules" and find `Custom Price Rule`.
+   - In your PrestaShop admin panel, navigate to "Modules" and find `Selling Price Rule`.
    - Click "Configure" to open the settings page.
 
 2. **Setting Up Markup Rules:**
@@ -34,16 +34,16 @@
    - Save the rule and it will automatically apply to relevant products.
 
 ## Usage
-Once you have configured your markup rules, `Custom Price Rule` will automatically update the selling prices of the products based on the defined rules every time the purchase costs change or new products are added.
+Once you have configured your markup rules, `Selling Price Rule` will automatically update the selling prices of the products based on the defined rules every time the purchase costs change or new products are added.
 
 ## Contributing
-Contributions to improve Custom Price Rule are always welcome. Whether it's bug fixes, feature enhancements or documentation improvements, please feel free to make a pull request.
+Contributions to improve Selling Price Rule are always welcome. Whether it's bug fixes, feature enhancements or documentation improvements, please feel free to make a pull request.
 
 1. **Fork the Repository:**
    - Go to the original repository on GitHub and click "Fork".
 
 2. **Clone Your Fork:**
-   - `git clone https://github.com/yourusername/custompricerule.git`
+   - `git clone https://github.com/yourusername/sellingpricerule.git`
    - Navigate into the cloned repository.
 
 3. **Make Your Changes:**
