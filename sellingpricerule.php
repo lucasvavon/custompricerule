@@ -143,6 +143,23 @@ class Sellingpricerule extends Module
         return $this->display(__FILE__, 'views/templates/admin/product-exclusion.tpl');
     }
 
+    public function hookDisplayBackOfficeHeader()
+    {
+        if (Tools::getValue('configure') == $this->name) {
+            $this->context->controller->addJS($this->_path . 'views/js/back.js');
+            $this->context->controller->addCSS($this->_path . 'views/css/back.css');
+            $this->context->controller->addCSS('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css');
+            $this->context->controller->addJS('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js');
+        }
+        $token = Tools::getAdminTokenLite('AdminSellingPriceRule');
+        // define js value to use in ajax url
+        Media::addJsDef(
+            [
+                'token' => $token,
+            ]
+        );
+    }
+
     public function hookActionObjectProductUpdateAfter($params)
     {
         // Retrieve the ID of product
@@ -150,13 +167,13 @@ class Sellingpricerule extends Module
         $product = new Product($productId);
         $wholesalePrice = (float) $product->wholesale_price;
         $rules = $this->getSellingPriceRules();
-        if ($wholesalePrice > 0 && !$product->hasAttributes()) {
+        if ($wholesalePrice > 0 && !$product->hasAttributes() && !$this->productExcluded($productId)) {
             foreach ($rules as $rule) {
                 $coef = (float) $rule['coef'] / 100;
                 $amountToAdd = $wholesalePrice * $coef;
                 $newPrice = $wholesalePrice + $amountToAdd;
 
-                $count = Db::getInstance()->getValue('SELECT COUNT(*) FROM `' . _DB_PREFIX_ . 'specific_price` WHERE id_product = ' . $productId . ' AND id_product_attribute = 0 AND id_group = ' . (int) $rule['id_group'] . ' AND id_shop = ' . (int) $rule['id_shop']);
+                $count = Db::getInstance()->getValue('SELECT COUNT(*) FROM ' . _DB_PREFIX_ . 'specific_price WHERE id_product = ' . $productId . ' AND id_product_attribute = 0 AND id_group = ' . (int) $rule['id_group'] . ' AND id_shop = ' . (int) $rule['id_shop']);
                 $hasRule = (int) $count > 0 ? true : false;
                 if ($hasRule) {
                     Db::getInstance()->update('specific_price', [
@@ -180,13 +197,13 @@ class Sellingpricerule extends Module
         $wholesalePrice = (float) $combination->wholesale_price;
         $rules = $this->getSellingPriceRules();
 
-        if ($wholesalePrice > 0) {
+        if ($wholesalePrice > 0 && !$this->productExcluded($productId)) {
             foreach ($rules as $rule) {
                 $coef = (float) ((int) $rule['coef'] / 100);
                 $amountToAdd = $wholesalePrice * $coef;
                 $newPrice = $wholesalePrice + $amountToAdd;
 
-                $count = Db::getInstance()->getValue('SELECT COUNT(*) FROM `' . _DB_PREFIX_ . 'specific_price` WHERE id_product_attribute = ' . $productAttributeId . ' AND id_group = ' . (int) $rule['id_group'] . ' AND id_shop = ' . (int) $rule['id_shop']);
+                $count = Db::getInstance()->getValue('SELECT COUNT(*) FROM ' . _DB_PREFIX_ . 'specific_price WHERE id_product_attribute = ' . $productAttributeId . ' AND id_group = ' . (int) $rule['id_group'] . ' AND id_shop = ' . (int) $rule['id_shop']);
                 $hasRule = (int) $count > 0 ? true : false;
                 if ($hasRule) {
                     Db::getInstance()->update('specific_price', [
@@ -200,26 +217,9 @@ class Sellingpricerule extends Module
         }
     }
 
-    public function hookDisplayBackOfficeHeader()
-    {
-        if (Tools::getValue('configure') == $this->name) {
-            $this->context->controller->addJS($this->_path . 'views/js/back.js');
-            $this->context->controller->addCSS($this->_path . 'views/css/back.css');
-            $this->context->controller->addCSS('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css');
-            $this->context->controller->addJS('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js');
-        }
-        $token = Tools::getAdminTokenLite('AdminSellingPriceRule');
-        // define js value to use in ajax url
-        Media::addJsDef(
-            [
-                'token' => $token,
-            ]
-        );
-    }
-
     public function getShops()
     {
-        return Db::getInstance()->executeS('SELECT * FROM `' . _DB_PREFIX_ . 'shop`');
+        return Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'shop');
     }
 
     public function getGroups()
@@ -231,24 +231,27 @@ class Sellingpricerule extends Module
     public function getProducts()
     {
         return Db::getInstance()->executeS('SELECT p.id_product, pl.name, p.reference FROM ' . _DB_PREFIX_ . 'product p
-        JOIN ' . _DB_PREFIX_ . 'product_lang pl ON p.id_product = pl.id_product
-        WHERE pl.id_lang = ' . $this->langId . ' ORDER BY p.id_product DESC;');
+        LEFT JOIN ' . _DB_PREFIX_ . 'product_lang pl ON p.id_product = pl.id_product
+        LEFT JOIN ' . _DB_PREFIX_ . 'selling_price_rule_exclusion spre ON p.id_product = spre.id_product 
+        WHERE pl.id_lang = ' . $this->langId . ' AND spre.id_product IS NULL
+        ORDER BY p.id_product DESC;');
     }
 
     public function getExclusions()
     {
-        return Db::getInstance()->executeS('SELECT spre.*, pl.name as product_name, p.reference as product_reference FROM `' . _DB_PREFIX_ . 'selling_price_rule_exclusion` spre 
-        JOIN ' . _DB_PREFIX_ . 'product p ON spre.id_product = p.id_product
-        JOIN ' . _DB_PREFIX_ . 'product_lang pl ON spre.id_product = pl.id_product;');
+        return Db::getInstance()->executeS('SELECT spre.*, pl.name as product_name, p.reference as product_reference FROM ' . _DB_PREFIX_ . 'selling_price_rule_exclusion spre 
+        LEFT JOIN ' . _DB_PREFIX_ . 'product p ON spre.id_product = p.id_product
+        LEFT JOIN ' . _DB_PREFIX_ . 'product_lang pl ON spre.id_product = pl.id_product
+        ORDER BY spre.id_exclusion DESC;');
     }
 
     public function getSellingPriceRules()
     {
         return Db::getInstance()->executeS('SELECT cpr.*, gl.name as group_name,  s.name as shop_name
-        FROM `' . _DB_PREFIX_ . 'selling_price_rule` cpr 
-        JOIN `' . _DB_PREFIX_ . 'group_lang` gl ON cpr.id_group = gl.id_group
-        JOIN `' . _DB_PREFIX_ . 'shop` s ON cpr.id_shop = s.id_shop
-        WHERE gl.`id_lang` = ' . $this->langId);
+        FROM ' . _DB_PREFIX_ . 'selling_price_rule cpr 
+        LEFT JOIN ' . _DB_PREFIX_ . 'group_lang gl ON cpr.id_group = gl.id_group
+        LEFT JOIN ' . _DB_PREFIX_ . 'shop s ON cpr.id_shop = s.id_shop
+        WHERE gl.id_lang = ' . $this->langId);
     }
 
     public function addSpecificPrice($productId, $shopId, $groupId, $newPrice, $attributeId = 0)
@@ -273,6 +276,13 @@ class Sellingpricerule extends Module
         $specificPrice->to = '0000-00-00 00:00:00';
 
         return $specificPrice->save();
+    }
+
+    public function productExcluded($productId): bool
+    {
+        $count = Db::getInstance()->getValue('SELECT COUNT(*) FROM ' . _DB_PREFIX_ . 'selling_price_rule_exclusion WHERE id_product = ' . (int) $productId);
+        PrestaShopLogger::addLog('SELECT COUNT(*) FROM ' . _DB_PREFIX_ . 'selling_price_rule_exclusion WHERE id_product = ' . (int) $productId . ' ==> ' . $count);
+        return $count > 0;
     }
 
     public function isUsingNewTranslationSystem()

@@ -25,8 +25,11 @@ class AdminSellingPriceRuleController extends ModuleAdminController
 {
     public function __construct()
     {
-        parent::__construct();
+        $this->module = Module::getInstanceByName('sellingpricerule');
         $this->ajax = true;
+
+        parent::__construct();
+        
     }
 
     public function displayAjaxApplyPriceRule()
@@ -89,6 +92,10 @@ class AdminSellingPriceRuleController extends ModuleAdminController
         $products = $this->getProducts();
 
         foreach ($products as $item) {
+            if ($this->productExcluded($item['id_product'])) {
+                PrestaShopLogger::addLog('controller p excluded : ' . $item['id_product']);
+                continue;
+            }
             $product = new Product($item['id_product']);
             $wholesalePriceProduct = (float) $product->wholesale_price;
 
@@ -103,8 +110,8 @@ class AdminSellingPriceRuleController extends ModuleAdminController
                     $coef = (float) ((int) $coefficient / 100);
                     $amountToAdd = $wholesalePriceAttribute * $coef;
                     $newPrice = $wholesalePriceAttribute + $amountToAdd;
-                    /* $result = $this->addSpecificPrice($product->id, $shopId, $groupId, $coefficient, $wholesalePriceAttribute, $attribute['id_product_attribute']); */
-                    $result = Module::getInstanceByName('sellingpricerule')->addSpecificPrice($product->id, $shopId, $groupId, $newPrice, $attribute['id_product_attribute']);
+
+                    $result = $this->module->addSpecificPrice($product->id, $shopId, $groupId, $newPrice, $attribute['id_product_attribute']);
                 }
             } else {
                 if ($wholesalePriceProduct <= 0) {
@@ -114,8 +121,7 @@ class AdminSellingPriceRuleController extends ModuleAdminController
                 $amountToAdd = $wholesalePriceProduct * $coef;
                 $newPrice = $wholesalePriceProduct + $amountToAdd;
 
-                $result = Module::getInstanceByName('sellingpricerule')->addSpecificPrice($product->id, $shopId, $groupId, $newPrice);
-                /* $result = $this->addSpecificPrice($product->id, $shopId, $groupId, $coefficient, $wholesalePriceProduct); */
+                $result = $this->module->addSpecificPrice($product->id, $shopId, $groupId, $newPrice);
             }
         }
 
@@ -130,7 +136,6 @@ class AdminSellingPriceRuleController extends ModuleAdminController
     }
 
 
-
     public function deletePriceRule($id_price_rule, $shopId, $groupId)
     {
         return Db::getInstance()->delete('specific_price', "id_shop = $shopId AND id_group = $groupId AND id_customer = 0 AND id_cart = 0 AND id_specific_price_rule = 0") && Db::getInstance()->delete('selling_price_rule', "id_price_rule = $id_price_rule");
@@ -141,17 +146,17 @@ class AdminSellingPriceRuleController extends ModuleAdminController
         return Db::getInstance()->insert('selling_price_rule_exclusion', [
             'id_product' => (int) $productId,
             'date_add' => date('Y-m-d H:i:s'),
-        ]);
+        ]) && Db::getInstance()->delete('specific_price', 'reduction_type = "amount" AND reduction = 0 AND id_customer = 0 AND id_cart = 0 AND id_specific_price_rule = 0 AND id_product = ' . $productId);
     }
 
     public function deleteExclusion($exclusionId)
     {
-        return Db::getInstance()->delete('selling_price_rule_exclusion', "id_exclusion = $exclusionId");
+        return Db::getInstance()->delete('selling_price_rule_exclusion', 'id_exclusion = ' . $exclusionId);
     }
 
     public function getProducts()
     {
-        return Db::getInstance()->executeS('SELECT * FROM `' . _DB_PREFIX_ . 'product`');
+        return Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'product');
     }
 
     public function getAttributeCombinations(Product $product)
