@@ -1,21 +1,21 @@
 {**
- * Copyright since 2007 PrestaShop SA and Contributors
- * PrestaShop is an International Registered Trademark & Property of PrestaShop SA
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License version 3.0
- * that is bundled with this package in the file LICENSE.md.
- * It is also available through the world-wide-web at this URL:
- * https://opensource.org/licenses/AFL-3.0
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@prestashop.com so we can send you a copy immediately.
- *
- * @author    PrestaShop SA and Contributors <contact@prestashop.com>
- * @copyright Since 2007 PrestaShop SA and Contributors
- * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
- *}
+* Copyright since 2007 PrestaShop SA and Contributors
+* PrestaShop is an International Registered Trademark & Property of PrestaShop SA
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Academic Free License version 3.0
+* that is bundled with this package in the file LICENSE.md.
+* It is also available through the world-wide-web at this URL:
+* https://opensource.org/licenses/AFL-3.0
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@prestashop.com so we can send you a copy immediately.
+*
+* @author PrestaShop SA and Contributors <contact@prestashop.com>
+	* @copyright Since 2007 PrestaShop SA and Contributors
+	* @license https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
+	*}
 	<form action="" id="exclusionForm">
 		<div class="panel" id="fieldset_0" style="position: relative;">
 
@@ -49,7 +49,8 @@
 				</div>
 				<div class="col-lg-2">
 					<button type="button" class="btn btn-danger pull-right" data-toggle="modal"
-						data-target="#deleteAllExclusionsModal" {if !$hasExclusions} disabled {/if}>{l s='Delete all exclusions'
+						data-target="#deleteAllExclusionsModal" {if !$hasExclusions} disabled {/if}>{l s='Delete all
+						exclusions'
 						d='Modules.Sellingpricerule.Admin'}</button>
 				</div>
 			</div>
@@ -72,7 +73,9 @@
 						{foreach from=$exclusions item=exclusion}
 						<tr>
 							<td style="padding: 0.5rem;">{$exclusion.id_product}</td>
-							<td style="padding: 0.5rem;"><a target="_blank" href="/admin-dev/index.php/sell/catalog/products/{$exclusion.id_product}?_token={$token}#tab-step1">{$exclusion.product_name}</a></td>
+							<td style="padding: 0.5rem;"><a target="_blank"
+									href="/admin-dev/index.php/sell/catalog/products/{$exclusion.id_product}?_token={$token}#tab-step1">{$exclusion.product_name}</a>
+							</td>
 							<td style="padding: 0.5rem;">{$exclusion.product_reference}</td>
 							<td style="padding: 0.5rem;">{$exclusion.date_add|date_format:"%d/%m/%Y"}</td>
 							<td style="padding: 0.5rem;">
@@ -98,12 +101,13 @@
 	</form>
 
 	<!-- Modal -->
-	<div class="modal fade" id="deleteAllExclusionsModal" tabindex="-1" role="dialog" aria-labelledby="deleteAllExclusionsModalLabel"
-		aria-hidden="true">
+	<div class="modal fade" id="deleteAllExclusionsModal" tabindex="-1" role="dialog"
+		aria-labelledby="deleteAllExclusionsModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title" id="deleteAllExclusionsModalLabel">{l s='Delete all exclusions' d='Modules.Sellingpricerule.Admin'}</h4>
+					<h4 class="modal-title" id="deleteAllExclusionsModalLabel">{l s='Delete all exclusions'
+						d='Modules.Sellingpricerule.Admin'}</h4>
 				</div>
 				<div class="modal-body">
 					{l s='Are you sure you want to remove all exclusions?' d='Modules.Sellingpricerule.Admin'}
@@ -124,7 +128,13 @@
 		$(document).ready(function () {
 			$('#productsInput').select2(
 				{
-					placeholder: "{l s='Search a product' d='Modules.Sellingpricerule.Admin'}"
+					placeholder: "{l s='Search a product' d='Modules.Sellingpricerule.Admin'}",
+					allowClear: true,
+					language: {
+						noResults: function () {
+							return "{l s='No results found' d='Modules.Sellingpricerule.Admin'}";
+						}
+					},
 				}
 			);
 		});
