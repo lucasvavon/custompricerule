@@ -77,9 +77,8 @@
         <target>Exclure</target>
         <note>Line: </note>
       </trans-unit>
-      <trans-unit id="e0248986fefc8d6722553c2ea45494d4">
-        <source>Delete all
-						exclusions</source>
+      <trans-unit id="4a4290bfc04bcdf9529bc6c53bc6fa05">
+        <source>Delete all exclusions</source>
         <target>Supprimer toutes les exclusions</target>
         <note>Line: </note>
       </trans-unit>
@@ -111,11 +110,6 @@
       <trans-unit id="90cbb7a748e3c5b86a26b24d86099f50">
         <source>No exclusion defined</source>
         <target>Pas d'exclusion définie</target>
-        <note>Line: </note>
-      </trans-unit>
-      <trans-unit id="4a4290bfc04bcdf9529bc6c53bc6fa05">
-        <source>Delete all exclusions</source>
-        <target>Supprimer toutes les exclusions</target>
         <note>Line: </note>
       </trans-unit>
       <trans-unit id="21e407b349edbfbc53ff572a245aaa6c">
@@ -183,10 +177,9 @@
         <target>Pas de règles définies</target>
         <note>Line: </note>
       </trans-unit>
-      <trans-unit id="ca78a6b9fcf00aa5a02039e71f9af4d5">
-        <source>This module lets you define a new sales price rule for a specific customer group. You apply a chosen
-            coefficient to the purchase price of each product, to define their new price.</source>
-        <target>Ce module vous permet de définir une nouvelle règle de prix de vente pour un groupe de clients spécifique. Vous appliquez un coefficient au prix d'achat de chaque produit, pour définir leur nouveau prix.</target>
+      <trans-unit id="92adefccc87affbc60fc55fe0a2e38d9">
+        <source>This module lets you define a new sales price rule for a specific customer group. You apply a chosen coefficient to the purchase price of each product, to define their new price.</source>
+        <target>Ce module vous permet de définir une nouvelle règle de prix de vente pour un groupe de clients spécifique. Vous appliquez un coefficient choisi au prix d'achat de chaque produit, pour définir leur nouveau prix.</target>
         <note>Line: </note>
       </trans-unit>
     </body>
