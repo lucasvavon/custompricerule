@@ -167,6 +167,8 @@ function deleteExclusion(id_exclusion) {
 }
 
 function deleteAllExclusions() {
+	document.querySelector('#deleteAllExclusionsModal').style.display = "none";
+	document.querySelector('.modal-backdrop.fade.in').style.display = "none";
 	const loaderExclusion = document.querySelector("#content .loaderExclusion-container");
 	loaderExclusion.style.display = "flex";
 	var postdata = {
