@@ -82,11 +82,6 @@
         <target>Cancellare tutte le esclusioni</target>
         <note>Line: </note>
       </trans-unit>
-      <trans-unit id="b718adec73e04ce3ec720dd11a06a308">
-        <source>ID</source>
-        <target>ID</target>
-        <note>Line: </note>
-      </trans-unit>
       <trans-unit id="49ee3087348e8d44e1feda1917443987">
         <source>Name</source>
         <target>Nome</target>

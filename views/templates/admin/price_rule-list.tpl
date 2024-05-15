@@ -29,7 +29,7 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>{l s='ID' d='Modules.Sellingpricerule.Admin'}</th>
+                        <th>ID</th>
                         <th>{l s='Shop' d='Modules.Sellingpricerule.Admin'}</th>
                         <th>{l s='Group' d='Modules.Sellingpricerule.Admin'}</th>
                         <th>{l s='Coefficient (in %)' d='Modules.Sellingpricerule.Admin'}</th>
