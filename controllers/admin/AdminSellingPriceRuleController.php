@@ -29,7 +29,6 @@ class AdminSellingPriceRuleController extends ModuleAdminController
         $this->ajax = true;
 
         parent::__construct();
-
     }
 
     public function displayAjaxApplyPriceRule()
@@ -143,7 +142,6 @@ class AdminSellingPriceRuleController extends ModuleAdminController
 
         return $result;
     }
-
 
     public function deletePriceRule($id_price_rule, $shopId, $groupId)
     {

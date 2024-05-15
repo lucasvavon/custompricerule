@@ -70,13 +70,13 @@ class Sellingpricerule extends Module
 			PRIMARY KEY (`id_price_rule`))
 			ENGINE=' . _MYSQL_ENGINE_ . ' default CHARSET=utf8'
         ) && Db::getInstance()->execute(
-                    'CREATE TABLE IF NOT EXISTS  `' . _DB_PREFIX_ . 'selling_price_rule_exclusion` (
+            'CREATE TABLE IF NOT EXISTS  `' . _DB_PREFIX_ . 'selling_price_rule_exclusion` (
             `id_exclusion` INT UNSIGNED NOT NULL AUTO_INCREMENT,
             `id_product` INT UNSIGNED NOT NULL,
 			`date_add` datetime,
 			PRIMARY KEY (`id_exclusion`))
 			ENGINE=' . _MYSQL_ENGINE_ . ' default CHARSET=utf8'
-                );
+        );
     }
 
     public function uninstallDb()
@@ -193,7 +193,6 @@ class Sellingpricerule extends Module
 
     public function hookActionProductAttributeUpdate($params)
     {
-
         // Retrieve the ID of product attribute
         $productAttributeId = (int) $params['id_product_attribute'];
         $productId = (int) Db::getInstance()->getValue('SELECT id_product FROM ' . _DB_PREFIX_ . 'product_attribute WHERE id_product_attribute = ' . $productAttributeId);
@@ -229,7 +228,6 @@ class Sellingpricerule extends Module
     public function getGroups()
     {
         return Db::getInstance()->executeS('SELECT gl.id_group as id_option, gl.name FROM ' . _DB_PREFIX_ . 'group_lang gl LEFT JOIN ' . _DB_PREFIX_ . 'selling_price_rule spr ON gl.id_group = spr.id_group WHERE id_lang = ' . $this->langId . ' AND spr.id_group IS NULL;');
-
     }
 
     public function getProducts()
@@ -285,12 +283,14 @@ class Sellingpricerule extends Module
     public function productExcluded($productId): bool
     {
         $count = Db::getInstance()->getValue('SELECT COUNT(*) FROM ' . _DB_PREFIX_ . 'selling_price_rule_exclusion WHERE id_product = ' . (int) $productId);
+
         return $count > 0;
     }
 
     public function hasExclusions(): bool
     {
         $count = Db::getInstance()->getValue('SELECT COUNT(*) FROM ' . _DB_PREFIX_ . 'selling_price_rule_exclusion');
+
         return $count > 0;
     }
 
