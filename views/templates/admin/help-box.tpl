@@ -18,8 +18,6 @@
  *}
 
     <div class="alert alert-info">
-        <p>{l s='This module lets you define a new sales price rule for a specific customer group. You apply a chosen
-            coefficient to the purchase price of each product, to define their new price.'
-            d='Modules.Sellingpricerule.Admin'}
+        <p>{l s='This module lets you define a new sales price rule for a specific customer group. You apply a chosen coefficient to the purchase price of each product, to define their new price.' d='Modules.Sellingpricerule.Admin'}
         </p>
     </div>

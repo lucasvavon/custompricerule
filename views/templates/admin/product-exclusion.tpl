@@ -49,9 +49,7 @@
 				</div>
 				<div class="col-lg-2">
 					<button type="button" class="btn btn-danger pull-right" data-toggle="modal"
-						data-target="#deleteAllExclusionsModal" {if !$hasExclusions} disabled {/if}>{l s='Delete all
-						exclusions'
-						d='Modules.Sellingpricerule.Admin'}</button>
+						data-target="#deleteAllExclusionsModal" {if !$hasExclusions} disabled {/if}>{l s='Delete all exclusions' d='Modules.Sellingpricerule.Admin'}</button>
 				</div>
 			</div>
 
