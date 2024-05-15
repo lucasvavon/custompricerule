@@ -18,10 +18,7 @@
  *}
     <div class="panel" id="fieldset_1" style="position: relative;">
         <div class="loaderDelete-container" style="display:none;">
-            <div class="puik-spinner-loader puik-spinner-loader--lg puik-spinner-loader--secondary" aria-live="polite"
-                role="status">
-                <div class="puik-spinner-loader__spinner" aria-hidden="true"></div>
-            </div>
+            <span class="loader"></span>
         </div>
 
         <div class="panel-heading">
