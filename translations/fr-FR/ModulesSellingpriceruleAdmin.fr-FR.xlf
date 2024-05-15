@@ -54,7 +54,7 @@
       </trans-unit>
       <trans-unit id="03dbf4c0ad8a21c19c5ad1b263074161">
         <source>This module lets you define sales prices calculated from the purchase price for a group of customers. This is ideal if you wish to sell to reseller customers by simply applying a percentage to the purchase price.</source>
-        <target>This module lets you define sales prices calculated from the purchase price for a group of customers. This is ideal if you wish to sell to reseller customers by simply applying a percentage to the purchase price.</target>
+        <target>Ce module vous permet de définir des prix de vente calculés à partir du prix d'achat pour un groupe de clients. Ceci est idéal si vous souhaitez vendre à des clients revendeurs en appliquant simplement un pourcentage au prix d'achat.</target>
         <note>Line: </note>
       </trans-unit>
       <trans-unit id="876f23178c29dc2552c0b48bf23cd9bd">
@@ -64,12 +64,12 @@
       </trans-unit>
       <trans-unit id="cb75200834786da6d75a5ec05108f7b0">
         <source>Product exclusion</source>
-        <target>Product exclusion</target>
+        <target>Exclusion de produits</target>
         <note>Line: </note>
       </trans-unit>
       <trans-unit id="deb10517653c255364175796ace3553f">
         <source>Product</source>
-        <target>Exclusion de produits</target>
+        <target>Produit</target>
         <note>Line: </note>
       </trans-unit>
       <trans-unit id="843f2812f595e7ec7c5036e89fde02d6">
@@ -77,8 +77,9 @@
         <target>Exclure</target>
         <note>Line: </note>
       </trans-unit>
-      <trans-unit id="4a4290bfc04bcdf9529bc6c53bc6fa05">
-        <source>Delete all exclusions</source>
+      <trans-unit id="e0248986fefc8d6722553c2ea45494d4">
+        <source>Delete all
+						exclusions</source>
         <target>Supprimer toutes les exclusions</target>
         <note>Line: </note>
       </trans-unit>
@@ -112,6 +113,11 @@
         <target>Pas d'exclusion définie</target>
         <note>Line: </note>
       </trans-unit>
+      <trans-unit id="4a4290bfc04bcdf9529bc6c53bc6fa05">
+        <source>Delete all exclusions</source>
+        <target>Supprimer toutes les exclusions</target>
+        <note>Line: </note>
+      </trans-unit>
       <trans-unit id="21e407b349edbfbc53ff572a245aaa6c">
         <source>Are you sure you want to remove all exclusions?</source>
         <target>Êtes-vous sûr de vouloir supprimer toutes les exclusions ?</target>
@@ -130,6 +136,11 @@
       <trans-unit id="c5f17f7ca53d9225478fdbfd0a5583ac">
         <source>Search a product</source>
         <target>Rechercher un produit</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="e576c23d915755d83e2d1f47bd9f6c22">
+        <source>No results found</source>
+        <target>Aucun résultat trouvé</target>
         <note>Line: </note>
       </trans-unit>
       <trans-unit id="dd593f8a542ab628cbba98c709255e60">
