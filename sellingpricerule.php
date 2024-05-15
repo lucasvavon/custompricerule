@@ -244,6 +244,7 @@ class Sellingpricerule extends Module
         return Db::getInstance()->executeS('SELECT spre.*, pl.name as product_name, p.reference as product_reference FROM ' . _DB_PREFIX_ . 'selling_price_rule_exclusion spre 
         LEFT JOIN ' . _DB_PREFIX_ . 'product p ON spre.id_product = p.id_product
         LEFT JOIN ' . _DB_PREFIX_ . 'product_lang pl ON spre.id_product = pl.id_product
+        WHERE pl.id_lang = ' . $this->langId . '
         ORDER BY spre.id_exclusion DESC;');
     }
 
