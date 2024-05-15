@@ -69,7 +69,7 @@
 						<tr>
 							<td style="padding: 0.5rem;">{$exclusion.id_product}</td>
 							<td style="padding: 0.5rem;"><a target="_blank"
-									href="/admin-dev/index.php/sell/catalog/products/{$exclusion.id_product}?_token={$token}#tab-step1">{$exclusion.product_name}</a>
+									href="/{$adminPath}/index.php/sell/catalog/products/{$exclusion.id_product}?_token={$token}#tab-step1">{$exclusion.product_name}</a>
 							</td>
 							<td style="padding: 0.5rem;">{$exclusion.product_reference}</td>
 							<td style="padding: 0.5rem;">{$exclusion.date_add|date_format:"%d/%m/%Y"}</td>

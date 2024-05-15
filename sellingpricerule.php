@@ -139,6 +139,7 @@ class Sellingpricerule extends Module
     {
         $AdminProductLinkComponents = parse_url($this->context->link->getAdminLink('AdminProducts'));
         parse_str($AdminProductLinkComponents['query'], $params);
+        $this->context->smarty->assign(['adminPath' => basename(_PS_ADMIN_DIR_)]);
         $this->context->smarty->assign(['token' => $params['_token']]);
         $this->context->smarty->assign(['hasExclusions' => $this->hasExclusions()]);
         $this->context->smarty->assign(['products' => $this->getProducts()]);
