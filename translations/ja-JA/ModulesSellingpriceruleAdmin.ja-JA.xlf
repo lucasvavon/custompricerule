@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="apb7w5hp3lofr8m" source-language="fr-FR" target-language="ja" datatype="plaintext">
+    <body>
+      <trans-unit id="3bf7e2e9fcdac42f4986893db9426188">
+        <source>The rule was not applied correctly. Some products have not been processed.</source>
+        <target>ルールが正しく適用されませんでした。一部の商品が処理されていません。</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="aaa44d9c8653089cbc7c3181f06ad0b1">
+        <source>The rule has been successfully applied.</source>
+        <target>ルールは正常に適用された。</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="a9f829e821f1d75b03471e20f60c232c">
+        <source>Deleting the rule failed.</source>
+        <target>ルールの削除に失敗しました。</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="8c8c0d82034edbbff80a025883fdd14a">
+        <source>The rule has been successfully deleted.</source>
+        <target>ルールは正常に削除されました。</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="61dca88cf549a05bcef4261a07c47a2e">
+        <source>The exclusion has been successfully added.</source>
+        <target>除外が正常に追加されました。</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="765230c58058decff7a4dce96d3661b7">
+        <source>Deleting exclusion failed.</source>
+        <target>除外の削除に失敗しました。</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="88d5f4988542a06fdcf8f07a147865af">
+        <source>The exclusion has been successfully deleted.</source>
+        <target>除外は正常に削除されました。</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="e16a3cad2f8e414752513e2ed24b29a5">
+        <source>Deleting all exclusions failed.</source>
+        <target>すべての除外項目の削除に失敗しました。</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="f7e1b0bfd30a60f1b342dd7d66360a92">
+        <source>All exclusions have been successfully deleted.</source>
+        <target>すべての除外項目が正常に削除されました。</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="b3085e124137f5f4eaed87143f6b36c1">
+        <source>Selling price rule based on purchase price</source>
+        <target>購入価格に基づく販売価格ルール</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="03dbf4c0ad8a21c19c5ad1b263074161">
+        <source>This module lets you define sales prices calculated from the purchase price for a group of customers. This is ideal if you wish to sell to reseller customers by simply applying a percentage to the purchase price.</source>
+        <target>このモジュールを使用すると、顧客グループの購入価格から計算された販売価格を定義することができます。これは、単に購入価格にパーセンテージを適用して再販業者に販売したい場合に最適です。</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="876f23178c29dc2552c0b48bf23cd9bd">
+        <source>Are you sure you want to uninstall?</source>
+        <target>本当にアンインストールしますか？</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="cb75200834786da6d75a5ec05108f7b0">
+        <source>Product exclusion</source>
+        <target>製品除外</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="deb10517653c255364175796ace3553f">
+        <source>Product</source>
+        <target>製品</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="843f2812f595e7ec7c5036e89fde02d6">
+        <source>Exclude</source>
+        <target>除外</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="4a4290bfc04bcdf9529bc6c53bc6fa05">
+        <source>Delete all exclusions</source>
+        <target>すべての除外項目を削除する</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="b718adec73e04ce3ec720dd11a06a308">
+        <source>ID</source>
+        <target>身分証明書</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="49ee3087348e8d44e1feda1917443987">
+        <source>Name</source>
+        <target>名称</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="63d5049791d9d79d86e9a108b0a999ca">
+        <source>Reference</source>
+        <target>参考</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="44749712dbec183e983dcd78a7736c41">
+        <source>Date</source>
+        <target>日付</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="06df33001c1d7187fdd81ea1f5b277aa">
+        <source>Actions</source>
+        <target>行動</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="90cbb7a748e3c5b86a26b24d86099f50">
+        <source>No exclusion defined</source>
+        <target>除外規定なし</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="21e407b349edbfbc53ff572a245aaa6c">
+        <source>Are you sure you want to remove all exclusions?</source>
+        <target>本当にすべての除外項目を削除しますか？</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="d3d2e617335f08df83599665eef8a418">
+        <source>Close</source>
+        <target>閉じる</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="27f2870eaa01c99fc83105240ad15f7f">
+        <source>Delete All</source>
+        <target>すべて削除</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="c5f17f7ca53d9225478fdbfd0a5583ac">
+        <source>Search a product</source>
+        <target>製品検索</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="e576c23d915755d83e2d1f47bd9f6c22">
+        <source>No results found</source>
+        <target>結果は見つかりませんでした</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="dd593f8a542ab628cbba98c709255e60">
+        <source>Add a rule</source>
+        <target>ルールを追加する</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="9f82518d468b9fee614fcc92f76bb163">
+        <source>Shop</source>
+        <target>ショップ</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="03937134cedab9078be39a77ee3a48a0">
+        <source>Group</source>
+        <target>グループ</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="008de33a83ac63b1e4bf04984c04fd3c">
+        <source>Coefficient (in %)</source>
+        <target>係数（単位）</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="db345bf640c9c2e7489cb9888e460fe7">
+        <source>No groups configurable</source>
+        <target>グループ設定不可</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="6583f7ad588f356bf8edaf53d6b1d94e">
+        <source>Apply rule</source>
+        <target>ルールを適用する</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="ceadfe06612eda23e701b8b5906db2cb">
+        <source>Rules list</source>
+        <target>ルール一覧</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="32c36730dfb18cc618149ee86ab4b467">
+        <source>No rules defined</source>
+        <target>規定なし</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="92adefccc87affbc60fc55fe0a2e38d9">
+        <source>This module lets you define a new sales price rule for a specific customer group. You apply a chosen coefficient to the purchase price of each product, to define their new price.</source>
+        <target>このモジュールでは、特定の顧客グループのための新しい販売価格ルールを定義することができます。各商品の購入価格に選択した係数を適用し、新しい価格を定義します。</target>
+        <note>Line: </note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

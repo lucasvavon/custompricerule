@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="apb7w5hp3lofr8m" source-language="fr-FR" target-language="ru" datatype="plaintext">
+    <body>
+      <trans-unit id="3bf7e2e9fcdac42f4986893db9426188">
+        <source>The rule was not applied correctly. Some products have not been processed.</source>
+        <target>Правило было применено неправильно. Некоторые продукты не подвергались обработке.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="aaa44d9c8653089cbc7c3181f06ad0b1">
+        <source>The rule has been successfully applied.</source>
+        <target>Правило успешно применено.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="a9f829e821f1d75b03471e20f60c232c">
+        <source>Deleting the rule failed.</source>
+        <target>Удаление правила не удалось.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="8c8c0d82034edbbff80a025883fdd14a">
+        <source>The rule has been successfully deleted.</source>
+        <target>Правило успешно удалено.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="61dca88cf549a05bcef4261a07c47a2e">
+        <source>The exclusion has been successfully added.</source>
+        <target>Исключение успешно добавлено.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="765230c58058decff7a4dce96d3661b7">
+        <source>Deleting exclusion failed.</source>
+        <target>Удаление исключения не удалось.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="88d5f4988542a06fdcf8f07a147865af">
+        <source>The exclusion has been successfully deleted.</source>
+        <target>Исключение успешно удалено.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="e16a3cad2f8e414752513e2ed24b29a5">
+        <source>Deleting all exclusions failed.</source>
+        <target>Не удалось удалить все исключения.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="f7e1b0bfd30a60f1b342dd7d66360a92">
+        <source>All exclusions have been successfully deleted.</source>
+        <target>Все исключения успешно удалены.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="b3085e124137f5f4eaed87143f6b36c1">
+        <source>Selling price rule based on purchase price</source>
+        <target>Правило цены продажи на основе цены покупки</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="03dbf4c0ad8a21c19c5ad1b263074161">
+        <source>This module lets you define sales prices calculated from the purchase price for a group of customers. This is ideal if you wish to sell to reseller customers by simply applying a percentage to the purchase price.</source>
+        <target>Этот модуль позволяет определить цены продажи, рассчитанные на основе цены покупки для группы клиентов. Это идеально, если вы хотите продавать клиентам-посредникам, просто добавляя процент к покупной цене.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="876f23178c29dc2552c0b48bf23cd9bd">
+        <source>Are you sure you want to uninstall?</source>
+        <target>Вы уверены, что хотите удалить?</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="cb75200834786da6d75a5ec05108f7b0">
+        <source>Product exclusion</source>
+        <target>Исключение продуктов</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="deb10517653c255364175796ace3553f">
+        <source>Product</source>
+        <target>Продукт</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="843f2812f595e7ec7c5036e89fde02d6">
+        <source>Exclude</source>
+        <target>Исключать</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="4a4290bfc04bcdf9529bc6c53bc6fa05">
+        <source>Delete all exclusions</source>
+        <target>Удалить все исключения</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="b718adec73e04ce3ec720dd11a06a308">
+        <source>ID</source>
+        <target>ИДЕНТИФИКАТОР</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="49ee3087348e8d44e1feda1917443987">
+        <source>Name</source>
+        <target>Имя</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="63d5049791d9d79d86e9a108b0a999ca">
+        <source>Reference</source>
+        <target>Ссылка</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="44749712dbec183e983dcd78a7736c41">
+        <source>Date</source>
+        <target>Дата</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="06df33001c1d7187fdd81ea1f5b277aa">
+        <source>Actions</source>
+        <target>Действия</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="90cbb7a748e3c5b86a26b24d86099f50">
+        <source>No exclusion defined</source>
+        <target>Исключение не определено</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="21e407b349edbfbc53ff572a245aaa6c">
+        <source>Are you sure you want to remove all exclusions?</source>
+        <target>Вы уверены, что хотите удалить все исключения?</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="d3d2e617335f08df83599665eef8a418">
+        <source>Close</source>
+        <target>Закрывать</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="27f2870eaa01c99fc83105240ad15f7f">
+        <source>Delete All</source>
+        <target>Удалить все</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="c5f17f7ca53d9225478fdbfd0a5583ac">
+        <source>Search a product</source>
+        <target>Поиск продукта</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="e576c23d915755d83e2d1f47bd9f6c22">
+        <source>No results found</source>
+        <target>результатов не найдено</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="dd593f8a542ab628cbba98c709255e60">
+        <source>Add a rule</source>
+        <target>Добавить правило</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="9f82518d468b9fee614fcc92f76bb163">
+        <source>Shop</source>
+        <target>Магазин</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="03937134cedab9078be39a77ee3a48a0">
+        <source>Group</source>
+        <target>Группа</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="008de33a83ac63b1e4bf04984c04fd3c">
+        <source>Coefficient (in %)</source>
+        <target>Коэффициент (в %)</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="db345bf640c9c2e7489cb9888e460fe7">
+        <source>No groups configurable</source>
+        <target>Нет настраиваемых групп</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="6583f7ad588f356bf8edaf53d6b1d94e">
+        <source>Apply rule</source>
+        <target>Применить правило</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="ceadfe06612eda23e701b8b5906db2cb">
+        <source>Rules list</source>
+        <target>Список правил</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="32c36730dfb18cc618149ee86ab4b467">
+        <source>No rules defined</source>
+        <target>Правила не определены</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="92adefccc87affbc60fc55fe0a2e38d9">
+        <source>This module lets you define a new sales price rule for a specific customer group. You apply a chosen coefficient to the purchase price of each product, to define their new price.</source>
+        <target>Этот модуль позволяет определить новое правило цены продажи для определенной группы клиентов. Вы применяете выбранный коэффициент к закупочной цене каждого продукта, чтобы определить его новую цену.</target>
+        <note>Line: </note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
