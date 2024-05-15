@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
-	<name>custompricerule</name>
-	<displayName><![CDATA[Selling Price Rule]]></displayName>
-	<version><![CDATA[1.0.0]]></version>
-	<description><![CDATA[Selling Price Rule Description]]></description>
-	<author><![CDATA[Piment Bleu]]></author>
-	<tab><![CDATA[pricing_promotion]]></tab>
-	<is_configurable>1</is_configurable>
-	<need_instance>1</need_instance>
+    <name>sellingpricerule</name>
+    <displayName><![CDATA[Selling price rule based on purchase price]]></displayName>
+    <version><![CDATA[1.0.0]]></version>
+    <description><![CDATA[This module lets you define sales prices calculated from the purchase price for a group of customers. This is ideal if you wish to sell to reseller customers by simply applying a percentage to the purchase price.]]></description>
+    <author><![CDATA[Piment Bleu]]></author>
+    <tab><![CDATA[pricing_promotion]]></tab>
+	<confirmUninstall><![CDATA[Are you sure you want to uninstall?]]></confirmUninstall>
+    <is_configurable>1</is_configurable>
+    <need_instance>1</need_instance>
 </module>
