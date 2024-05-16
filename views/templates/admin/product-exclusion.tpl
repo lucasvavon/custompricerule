@@ -21,6 +21,7 @@
 
 			<div class="loaderExclusion-container" style="display:none;">
 				<span class="loader"></span>
+				<span class="loading-message">{l s='Loading, please wait...' d='Modules.Sellingpricerule.Admin'}</span>
 			</div>
 
 			<div class="panel-heading">

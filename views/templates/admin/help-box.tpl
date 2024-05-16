@@ -16,6 +16,14 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  *}
+ <script type="text/javascript">
+    const messages = [
+					"{l s='Loading, please wait...' d='Modules.Sellingpricerule.Admin'}",
+					"{l s='This can last several minutes...' d='Modules.Sellingpricerule.Admin'}",
+					"{l s='Thank you for your patience...' d='Modules.Sellingpricerule.Admin'}",
+					"{l s='Just a little bit longer...' d='Modules.Sellingpricerule.Admin'}",
+				];
+ </script>
 
     <div class="alert alert-info">
         <p>{l s='This module lets you define a new sales price rule for a specific customer group. You apply a chosen coefficient to the purchase price of each product, to define their new price.' d='Modules.Sellingpricerule.Admin'}

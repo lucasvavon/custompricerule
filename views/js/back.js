@@ -18,182 +18,202 @@
  */
 
 document.addEventListener("DOMContentLoaded", function () {
-	const form = document.getElementById("priceRuleForm");
-	form.addEventListener("submit", function (e) {
-		e.preventDefault();
-		const id_shop = document.getElementById("groupShop").value;
-		const id_group = document.getElementById("groupSelect").value;
-		const coefficient = document.getElementById("coefficient").value;
-		applyPriceRule(id_shop, id_group, coefficient);
-	});
+    const form = document.getElementById("priceRuleForm");
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const id_shop = document.getElementById("groupShop").value;
+        const id_group = document.getElementById("groupSelect").value;
+        const coefficient = document.getElementById("coefficient").value;
+        applyPriceRule(id_shop, id_group, coefficient);
+    });
 
-	const exclusionForm = document.getElementById("exclusionForm");
-	exclusionForm.addEventListener("submit", function (e) {
-		e.preventDefault();
-		const productIds = $("#productsInput").val();
-		addExclusion(productIds);
-	});
-
+    const exclusionForm = document.getElementById("exclusionForm");
+    exclusionForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const productIds = $("#productsInput").val();
+        addExclusion(productIds);
+    });
 });
 
 function applyPriceRule(id_shop, id_group, coefficient) {
-	const loaderAdd = document.querySelector("#content .loaderAdd-container");
-	loaderAdd.style.display = "flex";
-	var postdata = {
-		controller: "AdminSellingPriceRule",
-		ajax: true,
-		action: "ApplyPriceRule",
-		token: token,
-		id_shop: id_shop,
-		id_group: id_group,
-		coefficient: coefficient,
-	};
-	$.ajax({
-		type: "POST",
-		cache: false,
-		dataType: "json",
-		url: "index.php",
-		data: postdata,
-	})
-		.done(function (response) {
-			loaderAdd.style.display = "none";
-			if (response.success) {
-				$.growl.notice({title: "", message: response.message});
-				location.reload();
-			} else {
-				$.growl.error({title: "", message: response.message});
-			}
-		})
-		.fail(function (response) {
-			console.error(response);
-		});
+    const loaderAdd = document.querySelector("#content .loaderAdd-container");
+	displaySpinnerMessage(loaderAdd);
+    loaderAdd.style.display = "flex";
+    var postdata = {
+        controller: "AdminSellingPriceRule",
+        ajax: true,
+        action: "ApplyPriceRule",
+        token: token,
+        id_shop: id_shop,
+        id_group: id_group,
+        coefficient: coefficient,
+    };
+    $.ajax({
+        type: "POST",
+        cache: false,
+        dataType: "json",
+        url: "index.php",
+        data: postdata,
+    })
+        .done(function (response) {
+            loaderAdd.style.display = "none";
+            if (response.success) {
+                $.growl.notice({ title: "", message: response.message });
+                location.reload();
+            } else {
+                $.growl.error({ title: "", message: response.message });
+            }
+        })
+        .fail(function (response) {
+            console.error(response);
+        });
 }
 
 function deletePriceRule(id_price_rule, id_shop, id_group) {
-	const loaderDelete = document.querySelector(
-		"#content .loaderDelete-container",
-	);
-	loaderDelete.style.display = "flex";
-	var postdata = {
-		controller: "AdminSellingPriceRule",
-		ajax: true,
-		action: "DeletePriceRule",
-		token: token,
-		id_price_rule: id_price_rule,
-		id_shop: id_shop,
-		id_group: id_group,
-	};
-	$.ajax({
-		type: "POST",
-		cache: false,
-		dataType: "json",
-		url: "index.php",
-		data: postdata,
-	})
-		.done(function (response) {
-			loaderDelete.style.display = "none";
-			if (response.success) {
-				$.growl.notice({title: "", message: response.message});
-				location.reload();
-			} else {
-				$.growl.error({title: "", message: response.message});
-			}
-		})
-		.fail(function (response) {
-			console.error(response);
-		});
+    const loaderDelete = document.querySelector(
+        "#content .loaderDelete-container",
+    );
+	displaySpinnerMessage(loaderDelete);
+    loaderDelete.style.display = "flex";
+    var postdata = {
+        controller: "AdminSellingPriceRule",
+        ajax: true,
+        action: "DeletePriceRule",
+        token: token,
+        id_price_rule: id_price_rule,
+        id_shop: id_shop,
+        id_group: id_group,
+    };
+    $.ajax({
+        type: "POST",
+        cache: false,
+        dataType: "json",
+        url: "index.php",
+        data: postdata,
+    })
+        .done(function (response) {
+            loaderDelete.style.display = "none";
+            if (response.success) {
+                $.growl.notice({ title: "", message: response.message });
+                location.reload();
+            } else {
+                $.growl.error({ title: "", message: response.message });
+            }
+        })
+        .fail(function (response) {
+            console.error(response);
+        });
 }
 
 function addExclusion(productIds) {
-	const loaderExclusion = document.querySelector("#content .loaderExclusion-container");
-	loaderExclusion.style.display = "flex";
-	var postdata = {
-		controller: "AdminSellingPriceRule",
-		ajax: true,
-		action: "AddExclusion",
-		token: token,
-		productIds: productIds,
-	};
-	$.ajax({
-		type: "POST",
-		cache: false,
-		dataType: "json",
-		url: "index.php",
-		data: postdata,
-	})
-		.done(function (response) {
-			loaderExclusion.style.display = "none";
-			if (response.success) {
-				$.growl.notice({title: "", message: response.message});
-				location.reload();
-			} else {
-				$.growl.error({title: "", message: response.message});
-			}
-		})
-		.fail(function (response) {
-			console.error(response);
-		});
+    const loaderExclusion = document.querySelector(
+        "#content .loaderExclusion-container",
+    );
+	displaySpinnerMessage(loaderExclusion);
+    loaderExclusion.style.display = "flex";
+    var postdata = {
+        controller: "AdminSellingPriceRule",
+        ajax: true,
+        action: "AddExclusion",
+        token: token,
+        productIds: productIds,
+    };
+    $.ajax({
+        type: "POST",
+        cache: false,
+        dataType: "json",
+        url: "index.php",
+        data: postdata,
+    })
+        .done(function (response) {
+            loaderExclusion.style.display = "none";
+            if (response.success) {
+                $.growl.notice({ title: "", message: response.message });
+                location.reload();
+            } else {
+                $.growl.error({ title: "", message: response.message });
+            }
+        })
+        .fail(function (response) {
+            console.error(response);
+        });
 }
 
 function deleteExclusion(id_exclusion) {
-	const loaderExclusion = document.querySelector("#content .loaderExclusion-container");
-	loaderExclusion.style.display = "flex";
-	var postdata = {
-		controller: "AdminSellingPriceRule",
-		ajax: true,
-		action: "DeleteExclusion",
-		token: token,
-		id_exclusion: id_exclusion,
-	};
-	$.ajax({
-		type: "POST",
-		cache: false,
-		dataType: "json",
-		url: "index.php",
-		data: postdata,
-	})
-		.done(function (response) {
-			loaderExclusion.style.display = "none";
-			if (response.success) {
-				$.growl.notice({title: "", message: response.message});
-				location.reload();
-			} else {
-				$.growl.error({title: "", message: response.message});
-			}
-		})
-		.fail(function (response) {
-			console.error(response);
-		});
+    const loaderExclusion = document.querySelector(
+        "#content .loaderExclusion-container",
+    );
+	displaySpinnerMessage(loaderExclusion);
+    loaderExclusion.style.display = "flex";
+    var postdata = {
+        controller: "AdminSellingPriceRule",
+        ajax: true,
+        action: "DeleteExclusion",
+        token: token,
+        id_exclusion: id_exclusion,
+    };
+    $.ajax({
+        type: "POST",
+        cache: false,
+        dataType: "json",
+        url: "index.php",
+        data: postdata,
+    })
+        .done(function (response) {
+            loaderExclusion.style.display = "none";
+            if (response.success) {
+                $.growl.notice({ title: "", message: response.message });
+                location.reload();
+            } else {
+                $.growl.error({ title: "", message: response.message });
+            }
+        })
+        .fail(function (response) {
+            console.error(response);
+        });
 }
 
 function deleteAllExclusions() {
-	document.querySelector('#deleteAllExclusionsModal').style.display = "none";
-	document.querySelector('.modal-backdrop.fade.in').style.display = "none";
-	const loaderExclusion = document.querySelector("#content .loaderExclusion-container");
-	loaderExclusion.style.display = "flex";
-	var postdata = {
-		controller: "AdminSellingPriceRule",
-		ajax: true,
-		action: "DeleteAllExclusions",
-		token: token,
-	};
-	$.ajax({
-		type: "POST",
-		cache: false,
-		dataType: "json",
-		url: "index.php",
-		data: postdata,
-	})
-		.done(function (response) {
-			loaderExclusion.style.display = "none";
-			if (response.success) {
-				$.growl.notice({title: "", message: response.message});
-				location.reload();
-			} else {
-				$.growl.error({title: "", message: response.message});
-			}
-		})
-		.fail(function (response) {
-			console.error(response);
-		});
+    document.querySelector("#deleteAllExclusionsModal").style.display = "none";
+    document.querySelector(".modal-backdrop.fade.in").style.display = "none";
+    const loaderExclusion = document.querySelector(
+        "#content .loaderExclusion-container",
+    );
+	displaySpinnerMessage(loaderExclusion);
+    loaderExclusion.style.display = "flex";
+    var postdata = {
+        controller: "AdminSellingPriceRule",
+        ajax: true,
+        action: "DeleteAllExclusions",
+        token: token,
+    };
+    $.ajax({
+        type: "POST",
+        cache: false,
+        dataType: "json",
+        url: "index.php",
+        data: postdata,
+    })
+        .done(function (response) {
+            loaderExclusion.style.display = "none";
+            if (response.success) {
+                $.growl.notice({ title: "", message: response.message });
+                location.reload();
+            } else {
+                $.growl.error({ title: "", message: response.message });
+            }
+        })
+        .fail(function (response) {
+            console.error(response);
+        });
+}
+
+function displaySpinnerMessage(container) {
+    const loadingMessage = container.querySelector(".loading-message");
+    let messageIndex = 0;
+
+    setInterval(() => {
+        messageIndex = (messageIndex + 1) % messages.length;
+        loadingMessage.textContent = messages[messageIndex];
+    }, 4000);
 }
