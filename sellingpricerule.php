@@ -279,7 +279,7 @@ class Sellingpricerule extends Module
         $specificPrice->from = date('Y-m-d H:i:s');
         $specificPrice->to = '0000-00-00 00:00:00';
 
-        return $specificPrice->save();
+        return $specificPrice->add();
     }
 
     public function productExcluded($productId): bool

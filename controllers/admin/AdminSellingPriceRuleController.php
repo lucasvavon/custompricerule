@@ -107,9 +107,10 @@ class AdminSellingPriceRuleController extends ModuleAdminController
             $product = new Product($item['id_product']);
             $wholesalePriceProduct = (float) $product->wholesale_price;
 
-            $attributes = $this->getAttributeCombinations($product);
+            if ($product->hasAttributes()) {
 
-            if (!empty($attributes)) {
+                $attributes = $this->getProductAttributes($product->id);
+
                 foreach ($attributes as $attribute) {
                     $wholesalePriceAttribute = (float) $attribute['wholesale_price'];
                     if ($wholesalePriceAttribute <= 0) {
@@ -171,8 +172,16 @@ class AdminSellingPriceRuleController extends ModuleAdminController
         return Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'product');
     }
 
-    public function getAttributeCombinations(Product $product)
+    public function getProductAttributesIds($productId)
     {
-        return $product->getAttributeCombinations();
+        return Product::getProductAttributesIds($productId);
+    }
+
+    public function getProductAttributes($productId)
+    {
+        return Db::getInstance()->executeS('
+        SELECT pa.id_product_attribute, pa.wholesale_price
+        FROM `' . _DB_PREFIX_ . 'product_attribute` pa
+        WHERE pa.`id_product` = ' . (int) $productId);
     }
 }
