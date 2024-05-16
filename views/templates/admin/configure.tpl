@@ -63,8 +63,8 @@
                 </div>
             </div>
             {else}
-            <div>
-                {l s='No groups configurable' d='Modules.Sellingpricerule.Admin'}
+            <div style="text-align: center;">
+                {l s='No groups configurable' d='Modules.Sellingpricerule.Admin'}.
             </div>
             {/if}
             <div class="panel-footer">
