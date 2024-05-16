@@ -108,7 +108,6 @@ class AdminSellingPriceRuleController extends ModuleAdminController
             $wholesalePriceProduct = (float) $product->wholesale_price;
 
             if ($product->hasAttributes()) {
-
                 $attributes = $this->getProductAttributes($product->id);
 
                 foreach ($attributes as $attribute) {

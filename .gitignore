@@ -1,8 +1,6 @@
 /_vendor/
-/_vendor/
-/composer.*
-/php-cs-fixer
-/.php-cs-fixer.cache
-/.php-cs-fixer.dist.php
+/composer*
+/.php-cs-fixer*
 /.idea
 /.fleet
+/tests
