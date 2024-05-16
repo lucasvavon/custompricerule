@@ -82,11 +82,6 @@
         <target>删除所有排除项</target>
         <note>Line: </note>
       </trans-unit>
-      <trans-unit id="b718adec73e04ce3ec720dd11a06a308">
-        <source>ID</source>
-        <target>ID</target>
-        <note>Line: </note>
-      </trans-unit>
       <trans-unit id="49ee3087348e8d44e1feda1917443987">
         <source>Name</source>
         <target>姓名</target>
@@ -180,6 +175,26 @@
       <trans-unit id="92adefccc87affbc60fc55fe0a2e38d9">
         <source>This module lets you define a new sales price rule for a specific customer group. You apply a chosen coefficient to the purchase price of each product, to define their new price.</source>
         <target>此模块可让您为特定客户群定义新的销售价格规则。您可以将选定的系数应用于每件产品的采购价格，以确定其新价格。</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="5e6d1b81196dab9470f551056ed3eb09">
+        <source>Loading, please wait...</source>
+        <target>加载请稍候...</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="afc1e504b796606b8eb47861fe097d52">
+        <source>This can last several minutes...</source>
+        <target>这可能持续几分钟...</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="c1e87dfe5213f92704e678625022be52">
+        <source>Thank you for your patience...</source>
+        <target>感谢您的耐心等待...</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="6c951d3f69a7949a4e3a15b6f974d818">
+        <source>Just a little bit longer...</source>
+        <target>再等一会儿……</target>
         <note>Line: </note>
       </trans-unit>
     </body>

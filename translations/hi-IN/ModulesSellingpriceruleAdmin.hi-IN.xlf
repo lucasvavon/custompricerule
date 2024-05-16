@@ -177,6 +177,26 @@
         <target>यह मॉड्यूल आपको किसी विशिष्ट ग्राहक समूह के लिए एक नया बिक्री मूल्य नियम परिभाषित करने देता है। आप प्रत्येक उत्पाद की खरीद मूल्य पर एक चुना हुआ गुणांक लागू करते हैं, ताकि उनकी नई कीमत निर्धारित की जा सके।</target>
         <note>Line: </note>
       </trans-unit>
+      <trans-unit id="5e6d1b81196dab9470f551056ed3eb09">
+        <source>Loading, please wait...</source>
+        <target>लोड हो रहा है कृपया प्रतीक्षा करें...</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="afc1e504b796606b8eb47861fe097d52">
+        <source>This can last several minutes...</source>
+        <target>यह कई मिनट तक चल सकता है...</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="c1e87dfe5213f92704e678625022be52">
+        <source>Thank you for your patience...</source>
+        <target>आपके धैर्य के लिए धन्यवाद...</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="6c951d3f69a7949a4e3a15b6f974d818">
+        <source>Just a little bit longer...</source>
+        <target>बस थोड़ा सा और...</target>
+        <note>Line: </note>
+      </trans-unit>
     </body>
   </file>
 </xliff>

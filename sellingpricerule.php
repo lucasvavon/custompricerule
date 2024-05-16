@@ -260,8 +260,6 @@ class Sellingpricerule extends Module
 
     public function addSpecificPrice($productId, $shopId, $groupId, $newPrice, $attributeId = 0)
     {
-        PrestaShopLogger::addLog("$productId with attri $attributeId : nv prix $newPrice !");
-
         $specificPrice = new SpecificPrice();
         $specificPrice->id_product = (int) $productId;
         $specificPrice->id_product_attribute = (int) $attributeId;

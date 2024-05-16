@@ -177,6 +177,26 @@
         <target>Este módulo permite definir uma nova regra de preço de venda para um grupo específico de clientes. Você aplica um coeficiente escolhido ao preço de compra de cada produto, para definir seu novo preço.</target>
         <note>Line: </note>
       </trans-unit>
+      <trans-unit id="5e6d1b81196dab9470f551056ed3eb09">
+        <source>Loading, please wait...</source>
+        <target>Carregando, por favor espere...</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="afc1e504b796606b8eb47861fe097d52">
+        <source>This can last several minutes...</source>
+        <target>Isso pode durar vários minutos...</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="c1e87dfe5213f92704e678625022be52">
+        <source>Thank you for your patience...</source>
+        <target>Obrigado pela sua paciência...</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="6c951d3f69a7949a4e3a15b6f974d818">
+        <source>Just a little bit longer...</source>
+        <target>Só mais um pouquinho...</target>
+        <note>Line: </note>
+      </trans-unit>
     </body>
   </file>
 </xliff>

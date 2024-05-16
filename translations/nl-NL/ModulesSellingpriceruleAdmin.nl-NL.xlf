@@ -177,6 +177,26 @@
         <target>Met deze module kun je een nieuwe regel voor verkoopprijzen definiëren voor een specifieke klantengroep. Je past een gekozen coëfficiënt toe op de aankoopprijs van elk product om hun nieuwe prijs te definiëren.</target>
         <note>Line: </note>
       </trans-unit>
+      <trans-unit id="5e6d1b81196dab9470f551056ed3eb09">
+        <source>Loading, please wait...</source>
+        <target>Laden even geduld aub...</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="afc1e504b796606b8eb47861fe097d52">
+        <source>This can last several minutes...</source>
+        <target>Dit kan enkele minuten duren...</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="c1e87dfe5213f92704e678625022be52">
+        <source>Thank you for your patience...</source>
+        <target>Bedankt voor uw geduld...</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="6c951d3f69a7949a4e3a15b6f974d818">
+        <source>Just a little bit longer...</source>
+        <target>Nog even...</target>
+        <note>Line: </note>
+      </trans-unit>
     </body>
   </file>
 </xliff>

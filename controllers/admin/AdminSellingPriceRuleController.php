@@ -37,10 +37,12 @@ class AdminSellingPriceRuleController extends ModuleAdminController
         $groupId = (int) Tools::getValue('id_group');
         $coefficient = (int) Tools::getValue('coefficient');
 
-        if (!$this->applyPriceRule($shopId, $groupId, $coefficient)) {
+        $res = $this->applyPriceRule($shopId, $groupId, $coefficient);
+        if (!$res['result']) {
             $response = ['success' => false, 'message' => $this->trans('The rule was not applied correctly. Some products have not been processed.', [], 'Modules.Sellingpricerule.Admin')];
             $this->ajaxDie(json_encode($response));
         }
+        PrestaShopLogger::addLog('The ' . $coefficient . '% rule for Group ' . $groupId . ' was applied to ' . $res['affectedRows'] . ' products.', 2);
         $response = ['success' => true, 'message' => $this->trans('The rule has been successfully applied.', [], 'Modules.Sellingpricerule.Admin')];
         $this->ajaxDie(json_encode($response));
     }
@@ -98,6 +100,7 @@ class AdminSellingPriceRuleController extends ModuleAdminController
     public function applyPriceRule($shopId, $groupId, $coefficient)
     {
         $result = true;
+        $affectedRows = 0;
         $products = $this->getProducts();
 
         foreach ($products as $item) {
@@ -120,6 +123,7 @@ class AdminSellingPriceRuleController extends ModuleAdminController
                     $newPrice = $wholesalePriceAttribute + $amountToAdd;
 
                     $result = $this->module->addSpecificPrice($product->id, $shopId, $groupId, $newPrice, $attribute['id_product_attribute']);
+                    $affectedRows += 1;
                 }
             } else {
                 if ($wholesalePriceProduct <= 0) {
@@ -130,6 +134,7 @@ class AdminSellingPriceRuleController extends ModuleAdminController
                 $newPrice = $wholesalePriceProduct + $amountToAdd;
 
                 $result = $this->module->addSpecificPrice($product->id, $shopId, $groupId, $newPrice);
+                $affectedRows += 1;
             }
         }
 
@@ -140,7 +145,7 @@ class AdminSellingPriceRuleController extends ModuleAdminController
             'date_add' => date('Y-m-d H:i:s'),
         ]);
 
-        return $result;
+        return ['result' => $result, 'affectedRows' => $affectedRows];
     }
 
     public function deletePriceRule($id_price_rule, $shopId, $groupId)

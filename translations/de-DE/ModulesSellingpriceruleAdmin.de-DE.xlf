@@ -177,6 +177,26 @@
         <target>Mit diesem Modul können Sie eine neue Verkaufspreisregel für eine bestimmte Kundengruppe definieren. Sie wenden einen ausgewählten Koeffizienten auf den Einkaufspreis jedes Produkts an, um dessen neuen Preis zu definieren.</target>
         <note>Line: </note>
       </trans-unit>
+      <trans-unit id="5e6d1b81196dab9470f551056ed3eb09">
+        <source>Loading, please wait...</source>
+        <target>Laden, bitte warten...</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="afc1e504b796606b8eb47861fe097d52">
+        <source>This can last several minutes...</source>
+        <target>Dies kann mehrere Minuten dauern...</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="c1e87dfe5213f92704e678625022be52">
+        <source>Thank you for your patience...</source>
+        <target>Vielen Dank für Ihre Geduld...</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="6c951d3f69a7949a4e3a15b6f974d818">
+        <source>Just a little bit longer...</source>
+        <target>Nur ein Bisschen länger...</target>
+        <note>Line: </note>
+      </trans-unit>
     </body>
   </file>
 </xliff>
