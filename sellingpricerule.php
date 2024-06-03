@@ -48,6 +48,7 @@ class Sellingpricerule extends Module
     {
         return parent::install()
             && $this->installDb()
+            && $this->clearCache()
             && $this->registerHook('displayBackOfficeHeader')
             && $this->registerHook('actionObjectProductUpdateAfter')
             && $this->registerHook('actionProductAttributeUpdate');
@@ -70,13 +71,13 @@ class Sellingpricerule extends Module
 			PRIMARY KEY (`id_price_rule`))
 			ENGINE=' . _MYSQL_ENGINE_ . ' default CHARSET=utf8'
         ) && Db::getInstance()->execute(
-            'CREATE TABLE IF NOT EXISTS  `' . _DB_PREFIX_ . 'selling_price_rule_exclusion` (
+                    'CREATE TABLE IF NOT EXISTS  `' . _DB_PREFIX_ . 'selling_price_rule_exclusion` (
             `id_exclusion` INT UNSIGNED NOT NULL AUTO_INCREMENT,
             `id_product` INT UNSIGNED NOT NULL,
 			`date_add` datetime,
 			PRIMARY KEY (`id_exclusion`))
 			ENGINE=' . _MYSQL_ENGINE_ . ' default CHARSET=utf8'
-        );
+                );
     }
 
     public function uninstallDb()
@@ -292,6 +293,17 @@ class Sellingpricerule extends Module
         $count = Db::getInstance()->getValue('SELECT COUNT(*) FROM ' . _DB_PREFIX_ . 'selling_price_rule_exclusion');
 
         return $count > 0;
+    }
+
+    private function clearCache()
+    {
+        $this->context->smarty->clearAllCache();
+
+        Tools::clearCache();
+
+        PrestaShopAutoload::getInstance()->generateIndex();
+
+        return true;
     }
 
     public function isUsingNewTranslationSystem()
