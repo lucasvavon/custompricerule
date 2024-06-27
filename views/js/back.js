@@ -37,13 +37,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function applyPriceRule(id_shop, id_group, coefficient) {
     const loaderAdd = document.querySelector("#content .loaderAdd-container");
-	displaySpinnerMessage(loaderAdd);
+    displaySpinnerMessage(loaderAdd);
     loaderAdd.style.display = "flex";
     var postdata = {
         controller: "AdminSellingPriceRule",
         ajax: true,
         action: "ApplyPriceRule",
-        token: token,
+        token: tokenAdminSellingPriceRule,
         id_shop: id_shop,
         id_group: id_group,
         coefficient: coefficient,
@@ -73,13 +73,13 @@ function deletePriceRule(id_price_rule, id_shop, id_group) {
     const loaderDelete = document.querySelector(
         "#content .loaderDelete-container",
     );
-	displaySpinnerMessage(loaderDelete);
+    displaySpinnerMessage(loaderDelete);
     loaderDelete.style.display = "flex";
     var postdata = {
         controller: "AdminSellingPriceRule",
         ajax: true,
         action: "DeletePriceRule",
-        token: token,
+        token: tokenAdminSellingPriceRule,
         id_price_rule: id_price_rule,
         id_shop: id_shop,
         id_group: id_group,
@@ -109,13 +109,13 @@ function addExclusion(productIds) {
     const loaderExclusion = document.querySelector(
         "#content .loaderExclusion-container",
     );
-	displaySpinnerMessage(loaderExclusion);
+    displaySpinnerMessage(loaderExclusion);
     loaderExclusion.style.display = "flex";
     var postdata = {
         controller: "AdminSellingPriceRule",
         ajax: true,
         action: "AddExclusion",
-        token: token,
+        token: tokenAdminSellingPriceRule,
         productIds: productIds,
     };
     $.ajax({
@@ -143,13 +143,13 @@ function deleteExclusion(id_exclusion) {
     const loaderExclusion = document.querySelector(
         "#content .loaderExclusion-container",
     );
-	displaySpinnerMessage(loaderExclusion);
+    displaySpinnerMessage(loaderExclusion);
     loaderExclusion.style.display = "flex";
     var postdata = {
         controller: "AdminSellingPriceRule",
         ajax: true,
         action: "DeleteExclusion",
-        token: token,
+        token: tokenAdminSellingPriceRule,
         id_exclusion: id_exclusion,
     };
     $.ajax({
@@ -179,13 +179,13 @@ function deleteAllExclusions() {
     const loaderExclusion = document.querySelector(
         "#content .loaderExclusion-container",
     );
-	displaySpinnerMessage(loaderExclusion);
+    displaySpinnerMessage(loaderExclusion);
     loaderExclusion.style.display = "flex";
     var postdata = {
         controller: "AdminSellingPriceRule",
         ajax: true,
         action: "DeleteAllExclusions",
-        token: token,
+        token: tokenAdminSellingPriceRule,
     };
     $.ajax({
         type: "POST",

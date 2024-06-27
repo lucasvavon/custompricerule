@@ -161,7 +161,7 @@ class Sellingpricerule extends Module
         // define js value to use in ajax url
         Media::addJsDef(
             [
-                'token' => $token,
+                'tokenAdminSellingPriceRule' => $token,
             ]
         );
     }
